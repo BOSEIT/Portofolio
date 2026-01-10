@@ -6,12 +6,14 @@
     <title>Luqfi Anita Rahman - Data Scientist Portfolio</title>
     <script src="https://unpkg.com/lucide@latest"></script>
     <style>
-        /* --- COPY CSS DARI SEBELUMNYA DI SINI (SAYA RINGKAS AGAR MUAT) --- */
+        /* --- RESET & BASE STYLES --- */
         * { margin: 0; padding: 0; box-sizing: border-box; }
         :root { --primary: #22d3ee; --secondary: #818cf8; --bg-dark: #0f172a; --bg-card: #1e293b; --text-main: #e2e8f0; --text-muted: #94a3b8; }
         body { font-family: -apple-system, system-ui, sans-serif; background: var(--bg-dark); color: var(--text-main); overflow-x: hidden; line-height: 1.6; }
-        body.modal-open { overflow: hidden; }
+        body.modal-open { overflow: hidden; } /* Prevent background scroll */
         ::-webkit-scrollbar { width: 8px; } ::-webkit-scrollbar-track { background: var(--bg-dark); } ::-webkit-scrollbar-thumb { background: #334155; border-radius: 4px; }
+        
+        /* Background */
         .bg-effects { position: fixed; inset: 0; pointer-events: none; z-index: 0; }
         .blur-circle { position: absolute; border-radius: 50%; filter: blur(100px); opacity: 0.3; }
         .blur-1 { top: -10%; left: -10%; width: 50vw; height: 50vw; background: #2563eb; animation: float 20s infinite; }
@@ -19,72 +21,82 @@
         .grid-pattern { position: absolute; inset: 0; background-image: radial-gradient(circle at 1px 1px, rgba(255,255,255,0.03) 1px, transparent 0); background-size: 40px 40px; }
         @keyframes float { 0%, 100% { transform: translate(0, 0); } 50% { transform: translate(30px, -30px); } }
         
+        /* Navigation */
         nav { position: fixed; top: 0; width: 100%; z-index: 100; padding: 1.5rem 2rem; display: flex; justify-content: space-between; align-items: center; transition: all 0.4s ease; }
-        nav.scrolled { background: rgba(15, 23, 42, 0.85); backdrop-filter: blur(16px); padding: 1rem 2rem; border-bottom: 1px solid rgba(255,255,255,0.05); box-shadow: 0 10px 30px -10px rgba(0,0,0,0.5); }
+        nav.scrolled { background: rgba(15, 23, 42, 0.95); backdrop-filter: blur(16px); padding: 1rem 2rem; border-bottom: 1px solid rgba(255,255,255,0.05); box-shadow: 0 10px 30px -10px rgba(0,0,0,0.5); }
         .logo { font-size: 1.5rem; font-weight: 800; letter-spacing: -0.05em; color: white; text-decoration: none; } .logo span { color: var(--primary); }
         .hire-btn { padding: 0.6rem 1.5rem; border-radius: 99px; background: var(--primary); color: var(--bg-dark); font-weight: 700; border: none; cursor: pointer; transition: all 0.3s; }
         .hire-btn:hover { transform: translateY(-2px); box-shadow: 0 0 20px rgba(34, 211, 238, 0.4); }
 
+        /* Modals Global */
         .modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.85); backdrop-filter: blur(8px); z-index: 2000; display: flex; justify-content: center; align-items: center; opacity: 0; pointer-events: none; transition: opacity 0.3s ease; padding: 1rem; }
         .modal-overlay.active { opacity: 1; pointer-events: auto; }
         .modal-content { background: #1e293b; border-radius: 1rem; border: 1px solid #334155; position: relative; transform: scale(0.95); transition: transform 0.3s ease; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5); display: flex; flex-direction: column; }
         .modal-overlay.active .modal-content { transform: scale(1); }
         .modal-close { position: absolute; top: 1rem; right: 1rem; background: rgba(0,0,0,0.5); border: none; color: #fff; cursor: pointer; width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: 0.2s; z-index: 50; }
         .modal-close:hover { background: rgba(255,255,255,0.2); transform: rotate(90deg); }
+        
+        /* Contact Modal */
         .contact-box { width: 100%; max-width: 400px; padding: 2rem; }
         .contact-options { display: flex; flex-direction: column; gap: 1rem; margin-top: 1.5rem; }
         .contact-btn { display: flex; align-items: center; gap: 1rem; padding: 1rem; background: #0f172a; border: 1px solid #334155; border-radius: 0.5rem; color: white; text-decoration: none; cursor: pointer; transition: all 0.2s; }
         .contact-btn:hover { border-color: var(--primary); background: #1e293b; }
 
         /* Project Modal (Text Detail) */
-        .project-modal-box { width: 100%; max-width: 900px; padding: 0; max-height: 90vh; display: flex; flex-direction: column; overflow: hidden; }
+        .project-modal-box { 
+            width: 100%; max-width: 900px; padding: 0; 
+            max-height: 90vh; 
+            display: flex; flex-direction: column; overflow: hidden; 
+        }
         #projectModalScrollable { overflow-y: auto; flex: 1; position: relative; }
         .project-modal-header { height: 300px; background-size: cover; background-position: center; position: relative; flex-shrink: 0; }
         .project-modal-header::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to bottom, transparent, #1e293b); }
-        .project-modal-body { padding: 2.5rem; position: relative; }
+        .project-modal-body { padding: 2.5rem; position: relative; width: 100%; }
         .project-meta-tags { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1.5rem; }
         .project-tag { background: rgba(34, 211, 238, 0.1); color: var(--primary); padding: 0.25rem 0.75rem; border-radius: 99px; font-size: 0.8rem; font-weight: 600; }
-        .case-study-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 2rem; border-top: 1px solid #334155; padding-top: 2rem; }
+        
+        .case-study-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 2rem; border-top: 1px solid #334155; padding-top: 2rem; width: 100%; }
+        .case-item { width: 100%; }
         .case-item h4 { color: white; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem; }
-        .case-item p { font-size: 0.95rem; color: #cbd5e1; }
+        .case-item p { font-size: 0.95rem; color: #cbd5e1; word-wrap: break-word; }
         .impact-number { font-size: 1.5rem; font-weight: 800; color: #34d399; display: block; margin-top: 0.5rem; }
 
-        /* LIGHTBOX STYLES (NEW) */
-        .lightbox-overlay {
-            position: fixed; inset: 0; background: rgba(0,0,0,0.95); z-index: 3000;
-            display: flex; justify-content: center; align-items: center;
-            opacity: 0; pointer-events: none; transition: opacity 0.3s ease;
+        /* Lightbox (Image Popup) - FIXED VISIBILITY BUG */
+        .lightbox-overlay { 
+            position: fixed; inset: 0; background: rgba(0,0,0,0.95); z-index: 3000; 
+            display: flex; justify-content: center; align-items: center; 
+            opacity: 0; visibility: hidden; /* Added visibility hidden */
+            transition: opacity 0.3s ease, visibility 0.3s ease; /* Added transition */
+            pointer-events: none; /* Default none */
         }
-        .lightbox-overlay.active { opacity: 1; pointer-events: auto; }
-        .lightbox-container { position: relative; width: 90%; max-width: 1200px; height: 90vh; display: flex; justify-content: center; align-items: center; }
-        .lightbox-img { max-width: 100%; max-height: 100%; object-fit: contain; border-radius: 8px; box-shadow: 0 0 50px rgba(0,0,0,0.5); }
-        
-        .lightbox-nav-btn {
-            position: absolute; top: 50%; transform: translateY(-50%);
-            background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2);
-            color: white; width: 50px; height: 50px; border-radius: 50%;
-            display: flex; align-items: center; justify-content: center;
-            cursor: pointer; transition: 0.2s; z-index: 10;
+        .lightbox-overlay.active { 
+            opacity: 1; 
+            visibility: visible; /* Show when active */
+            pointer-events: auto; /* Enable clicks */
         }
+        .lightbox-container { position: relative; width: 95%; max-width: 1200px; height: 90vh; display: flex; justify-content: center; align-items: center; padding: 10px; }
+        /* Prevent container from capturing clicks intended for close */
+        .lightbox-container { pointer-events: none; } 
+        /* Re-enable clicks for image and buttons */
+        .lightbox-img { pointer-events: auto; max-width: 100%; max-height: 100%; object-fit: contain; border-radius: 4px; box-shadow: 0 0 50px rgba(0,0,0,0.5); }
+        .lightbox-nav-btn { pointer-events: auto; position: absolute; top: 50%; transform: translateY(-50%); background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); color: white; width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: 0.2s; z-index: 10; }
         .lightbox-nav-btn:hover { background: var(--primary); color: #000; }
-        .lightbox-prev { left: 10px; }
-        .lightbox-next { right: 10px; }
-        .lightbox-close { 
-            position: absolute; top: 20px; right: 20px; 
-            background: transparent; border: none; color: white; 
-            cursor: pointer; z-index: 20; 
-        }
+        .lightbox-prev { left: 10px; } .lightbox-next { right: 10px; }
+        .lightbox-close { pointer-events: auto; position: absolute; top: 20px; right: 20px; background: transparent; border: none; color: white; cursor: pointer; z-index: 20; }
 
-        main { position: relative; z-index: 10; max-width: 1200px; margin: 0 auto; padding: 8rem 1.5rem 4rem; }
-        .section-gap { margin-bottom: 8rem; }
+        /* Main Layout */
+        main { position: relative; z-index: 10; max-width: 1200px; margin: 0 auto; padding: 8rem 1.5rem 4rem; overflow: hidden; }
+        .section-gap { margin-bottom: 8rem; position: relative; width: 100%; }
         .section-title { text-align: center; font-size: 2.5rem; color: white; margin-bottom: 1rem; }
         .section-subtitle-text { text-align: center; max-width: 700px; margin: 0 auto 3rem auto; font-size: 1.1rem; color: #cbd5e1; line-height: 1.8; }
+        
         .header { text-align: center; max-width: 800px; margin: 0 auto 5rem; }
         .badge { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.5rem 1rem; border-radius: 99px; background: rgba(34, 211, 238, 0.1); border: 1px solid rgba(34, 211, 238, 0.3); color: var(--primary); font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 2rem; }
         h1 { font-size: clamp(2.5rem, 5vw, 4.5rem); font-weight: 800; line-height: 1.1; margin-bottom: 1.5rem; color: white; }
         .gradient-text { background: linear-gradient(135deg, var(--primary), var(--secondary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
         .subtitle { font-size: 1.2rem; color: var(--text-muted); line-height: 1.8; margin-bottom: 2rem; }
 
+        /* Stats */
         .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; margin-bottom: 8rem; border-top: 1px solid rgba(255,255,255,0.1); border-bottom: 1px solid rgba(255,255,255,0.1); padding: 2.5rem 0; }
         .stat-card { background: transparent; border: none; padding: 0 1.5rem; text-align: left; position: relative; border-left: 1px solid rgba(255,255,255,0.1); transition: all 0.3s ease; }
         .stat-card:first-child { border-left: none; padding-left: 0; }
@@ -92,6 +104,7 @@
         .stat-value { font-size: 2rem; font-weight: 700; color: white; margin-bottom: 0.2rem; line-height: 1; letter-spacing: -0.02em; }
         .stat-label { font-size: 0.8rem; color: var(--text-muted); font-weight: 500; text-transform: uppercase; letter-spacing: 1px; }
 
+        /* Approach */
         .approach-new-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; }
         .approach-card { background: linear-gradient(145deg, #1e293b, #0f172a); padding: 2rem; border-radius: 1rem; border: 1px solid #334155; transition: all 0.3s; position: relative; overflow: hidden; }
         .approach-card:hover { transform: translateY(-5px); border-color: var(--primary); }
@@ -101,6 +114,7 @@
         .approach-card h3 { color: white; margin-bottom: 0.75rem; font-size: 1.25rem; }
         .approach-card p { color: var(--text-muted); font-size: 0.95rem; line-height: 1.6; }
 
+        /* Experience */
         .timeline { position: relative; border-left: 2px solid #334155; margin-left: 1rem; padding-left: 2rem; }
         .timeline-item { margin-bottom: 3rem; position: relative; }
         .timeline-dot { position: absolute; left: -2.6rem; top: 0.5rem; width: 1.2rem; height: 1.2rem; background: var(--bg-dark); border: 2px solid var(--primary); border-radius: 50%; box-shadow: 0 0 10px rgba(34, 211, 238, 0.5); }
@@ -109,13 +123,21 @@
         .timeline-company { color: #cbd5e1; font-size: 1.1rem; margin-bottom: 1rem; display: block; }
         .timeline-desc { color: var(--text-muted); }
 
-        .gallery-container { position: relative; height: 600px; perspective: 1500px; display: flex; flex-direction: column; align-items: center; }
+        /* Carousel */
+        .gallery-container { position: relative; height: 600px; perspective: 1500px; display: flex; flex-direction: column; align-items: center; width: 100%; }
         #projects .section-title { margin-bottom: 4rem; }
         .carousel-nav { margin-top: 2rem; display: flex; gap: 1rem; z-index: 50; }
         .nav-arrow { background: rgba(30, 41, 59, 0.8); border: 1px solid #334155; color: white; width: 48px; height: 48px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: all 0.3s; }
         .nav-arrow:hover { background: var(--primary); border-color: var(--primary); transform: scale(1.1); color: var(--bg-dark); }
         .cards-wrapper { position: relative; width: 100%; height: 100%; display: flex; justify-content: center; align-items: center; transform-style: preserve-3d; }
-        .project-card-3d { position: absolute; width: min(800px, 90%); transition: all 0.8s cubic-bezier(0.165, 0.84, 0.44, 1); background: #1e293b; border-radius: 1rem; border: 1px solid #334155; overflow: hidden; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5); opacity: 0; pointer-events: none; }
+        .project-card-3d { 
+            position: absolute; width: min(800px, 90%); 
+            transition: all 0.8s cubic-bezier(0.165, 0.84, 0.44, 1); 
+            background: #1e293b; border-radius: 1rem; border: 1px solid #334155; 
+            overflow: hidden; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5); 
+            opacity: 0; pointer-events: none; 
+            cursor: pointer; /* Clickable cursor */
+        }
         .project-card-3d.active { opacity: 1; pointer-events: auto; z-index: 10; transform: translateX(0) scale(1) translateZ(0); filter: brightness(100%); }
         .project-card-3d.prev { opacity: 0.4; z-index: 5; transform: translateX(-60%) scale(0.8) translateZ(-100px) rotateY(15deg); filter: brightness(50%) blur(2px); }
         .project-card-3d.next { opacity: 0.4; z-index: 5; transform: translateX(60%) scale(0.8) translateZ(-100px) rotateY(-15deg); filter: brightness(50%) blur(2px); }
@@ -135,9 +157,9 @@
         .view-project-btn { display: inline-flex; align-items: center; gap: 0.5rem; background: transparent; border: none; color: white; text-decoration: none; font-weight: 600; border-bottom: 2px solid var(--primary); padding-bottom: 2px; cursor: pointer; font-size: 1rem; }
         .view-project-btn:hover { color: var(--primary); }
 
-        .masonry-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); grid-auto-rows: 250px; gap: 1rem; }
-        .gallery-item:nth-child(3n+1) { grid-row: span 2; } .gallery-item:nth-child(4n+4) { grid-column: span 2; }
-        .gallery-item { position: relative; border-radius: 0.75rem; overflow: hidden; cursor: pointer; border: 1px solid #334155; opacity: 0; transform: translateY(50px); transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1); }
+        /* Gallery Grid */
+        .masonry-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; }
+        .gallery-item { position: relative; border-radius: 0.75rem; overflow: hidden; cursor: pointer; border: 1px solid #334155; opacity: 0; transform: translateY(50px); transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1); aspect-ratio: 4/3; }
         .gallery-item.reveal-active { opacity: 1; transform: translateY(0); }
         .gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease; }
         .gallery-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(15, 23, 42, 0.9), transparent); opacity: 0; transition: opacity 0.3s ease; display: flex; align-items: flex-end; padding: 1.5rem; }
@@ -149,12 +171,59 @@
         .social-icons a { color: #94a3b8; transition: color 0.3s; }
         .social-icons a:hover { color: var(--primary); }
 
+        /* --- MOBILE RESPONSIVE FIX (FINAL UX) --- */
         @media (max-width: 768px) {
-            h1 { font-size: 2.5rem; } .gallery-container { height: 500px; } .project-card-3d { width: 95%; } .card-img { height: 180px; }
-            .masonry-grid { grid-template-columns: 1fr; grid-auto-rows: 300px; } .gallery-item:nth-child(n) { grid-row: span 1; grid-column: span 1; }
-            .case-study-grid { grid-template-columns: 1fr; } .project-modal-header { height: 200px; }
+            h1 { font-size: 2.5rem; } 
+            
+            /* Carousel Fix - INCREASE HEIGHT & MOVE BUTTONS */
+            .gallery-container { 
+                height: 700px; /* Increased height to give space */
+                overflow: hidden; 
+                justify-content: flex-start; /* Align top */
+                padding-top: 1rem;
+            } 
+            .project-card-3d { 
+                width: 85%; 
+                top: 1rem; /* Push card a bit down from top */
+                position: absolute;
+            } 
+            .card-img { height: 180px; }
+
+            /* Buttons Moved BELOW Card */
+            .carousel-nav {
+                position: absolute;
+                bottom: 3rem; /* Stick to bottom with safe area */
+                width: 100%;
+                justify-content: center;
+                gap: 2rem;
+                margin-top: 0;
+            }
+            /* Make buttons slightly bigger on mobile for easier tap */
+            .nav-arrow { width: 56px; height: 56px; }
+
+            /* Fix Title */
+            #projects .section-title { margin-bottom: 2rem; padding: 0 1rem; }
+
+            /* Gallery */
+            .masonry-grid { grid-template-columns: 1fr; gap: 1rem; }
+            .gallery-item { aspect-ratio: 16/9; }
+            
+            /* Project Modal */
+            .project-modal-box { width: 90%; max-height: 85vh; margin: auto; }
+            .project-modal-header { height: 180px; }
+            .project-modal-body { padding: 1.25rem; } 
+            .project-modal-body h2 { font-size: 1.4rem !important; line-height: 1.3; word-wrap: break-word; } 
+            .case-study-grid { grid-template-columns: 1fr; gap: 1.5rem; width: 100%; }
+            
+            /* Stats */
             .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 2rem 1rem; padding: 0 1rem; border: none; margin-bottom: 4rem; }
             .stat-card { border-left: 2px solid var(--primary); margin-bottom: 1rem; padding-left: 1rem; }
+            
+            /* Lightbox */
+            .lightbox-container { width: 100%; padding: 1rem; }
+            .lightbox-img { max-width: 100%; height: auto; max-height: 70vh; object-fit: contain; }
+            .lightbox-nav-btn { width: 40px; height: 40px; }
+            .lightbox-prev { left: 5px; } .lightbox-next { right: 5px; }
         }
     </style>
 </head>
@@ -338,6 +407,7 @@
             appData.projects.forEach((project, index) => {
                 const card = document.createElement('div');
                 card.className = 'project-card-3d';
+                card.setAttribute('onclick', `openProjectModal(${index})`); // Add full card click
                 card.innerHTML = `
                     <div class="browser-bar"><div class="dots"><div class="dot red"></div><div class="dot yellow"></div><div class="dot green"></div></div><div class="url">portfolio/${project.title.toLowerCase().replace(/\s/g, '-')}</div></div>
                     <div class="card-content">
@@ -347,7 +417,7 @@
                             <h3 class="card-title">${project.title}</h3>
                             <p class="card-desc">${project.desc}</p>
                             <div class="tech-stack">${project.tech.split(',').map(t=>`<span class="tech-pill">${t.trim()}</span>`).join('')}</div>
-                            <button onclick="openProjectModal(${index})" class="view-project-btn">View Case Study <i data-lucide="arrow-right" size="16"></i></button>
+                            <button class="view-project-btn">View Case Study <i data-lucide="arrow-right" size="16"></i></button>
                         </div>
                     </div>
                 `;
@@ -443,11 +513,12 @@
         }
         function closeProjectModal() { projectModal.classList.remove('active'); body.classList.remove('modal-open'); }
         
-        // Window Click to Close
+        // Window Click to Close (Updated Logic)
         window.onclick = (e) => { 
             if (e.target === contactModal) closeContactModal(); 
             if (e.target === projectModal) closeProjectModal(); 
-            if (e.target === lightbox) closeLightbox(); 
+            // Close lightbox if clicking overlay OR the container wrapper (empty area)
+            if (e.target === lightbox || e.target.classList.contains('lightbox-container')) closeLightbox(); 
         };
         
         function copyEmail() { const email = appData.contact.email; navigator.clipboard.writeText(email).then(() => { const btn = document.getElementById('copyBtn'); const originalText = document.getElementById('copyText').innerText; document.getElementById('copyText').innerText = "Copied!"; btn.style.borderColor = "#22c55e"; btn.style.color = "#22c55e"; setTimeout(() => { document.getElementById('copyText').innerText = originalText; btn.style.borderColor = "#334155"; btn.style.color = "white"; }, 2000); }); }
