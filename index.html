@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luqfi Anita Rahman - Data Scientist Portfolio</title>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        /* --- COPY CSS DARI SEBELUMNYA DI SINI (SAYA RINGKAS AGAR MUAT) --- */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root { --primary: #22d3ee; --secondary: #818cf8; --bg-dark: #0f172a; --bg-card: #1e293b; --text-main: #e2e8f0; --text-muted: #94a3b8; }
+        body { font-family: -apple-system, system-ui, sans-serif; background: var(--bg-dark); color: var(--text-main); overflow-x: hidden; line-height: 1.6; }
+        body.modal-open { overflow: hidden; }
+        ::-webkit-scrollbar { width: 8px; } ::-webkit-scrollbar-track { background: var(--bg-dark); } ::-webkit-scrollbar-thumb { background: #334155; border-radius: 4px; }
+        .bg-effects { position: fixed; inset: 0; pointer-events: none; z-index: 0; }
+        .blur-circle { position: absolute; border-radius: 50%; filter: blur(100px); opacity: 0.3; }
+        .blur-1 { top: -10%; left: -10%; width: 50vw; height: 50vw; background: #2563eb; animation: float 20s infinite; }
+        .blur-2 { bottom: -10%; right: -10%; width: 50vw; height: 50vw; background: #059669; animation: float 25s infinite reverse; }
+        .grid-pattern { position: absolute; inset: 0; background-image: radial-gradient(circle at 1px 1px, rgba(255,255,255,0.03) 1px, transparent 0); background-size: 40px 40px; }
+        @keyframes float { 0%, 100% { transform: translate(0, 0); } 50% { transform: translate(30px, -30px); } }
+        
+        nav { position: fixed; top: 0; width: 100%; z-index: 100; padding: 1.5rem 2rem; display: flex; justify-content: space-between; align-items: center; transition: all 0.4s ease; }
+        nav.scrolled { background: rgba(15, 23, 42, 0.85); backdrop-filter: blur(16px); padding: 1rem 2rem; border-bottom: 1px solid rgba(255,255,255,0.05); box-shadow: 0 10px 30px -10px rgba(0,0,0,0.5); }
+        .logo { font-size: 1.5rem; font-weight: 800; letter-spacing: -0.05em; color: white; text-decoration: none; } .logo span { color: var(--primary); }
+        .hire-btn { padding: 0.6rem 1.5rem; border-radius: 99px; background: var(--primary); color: var(--bg-dark); font-weight: 700; border: none; cursor: pointer; transition: all 0.3s; }
+        .hire-btn:hover { transform: translateY(-2px); box-shadow: 0 0 20px rgba(34, 211, 238, 0.4); }
+
+        .modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.85); backdrop-filter: blur(8px); z-index: 2000; display: flex; justify-content: center; align-items: center; opacity: 0; pointer-events: none; transition: opacity 0.3s ease; padding: 1rem; }
+        .modal-overlay.active { opacity: 1; pointer-events: auto; }
+        .modal-content { background: #1e293b; border-radius: 1rem; border: 1px solid #334155; position: relative; transform: scale(0.95); transition: transform 0.3s ease; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5); display: flex; flex-direction: column; }
+        .modal-overlay.active .modal-content { transform: scale(1); }
+        .modal-close { position: absolute; top: 1rem; right: 1rem; background: rgba(0,0,0,0.5); border: none; color: #fff; cursor: pointer; width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: 0.2s; z-index: 50; }
+        .modal-close:hover { background: rgba(255,255,255,0.2); transform: rotate(90deg); }
+        .contact-box { width: 100%; max-width: 400px; padding: 2rem; }
+        .contact-options { display: flex; flex-direction: column; gap: 1rem; margin-top: 1.5rem; }
+        .contact-btn { display: flex; align-items: center; gap: 1rem; padding: 1rem; background: #0f172a; border: 1px solid #334155; border-radius: 0.5rem; color: white; text-decoration: none; cursor: pointer; transition: all 0.2s; }
+        .contact-btn:hover { border-color: var(--primary); background: #1e293b; }
+
+        /* Project Modal (Text Detail) */
+        .project-modal-box { width: 100%; max-width: 900px; padding: 0; max-height: 90vh; display: flex; flex-direction: column; overflow: hidden; }
+        #projectModalScrollable { overflow-y: auto; flex: 1; position: relative; }
+        .project-modal-header { height: 300px; background-size: cover; background-position: center; position: relative; flex-shrink: 0; }
+        .project-modal-header::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to bottom, transparent, #1e293b); }
+        .project-modal-body { padding: 2.5rem; position: relative; }
+        .project-meta-tags { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1.5rem; }
+        .project-tag { background: rgba(34, 211, 238, 0.1); color: var(--primary); padding: 0.25rem 0.75rem; border-radius: 99px; font-size: 0.8rem; font-weight: 600; }
+        .case-study-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 2rem; border-top: 1px solid #334155; padding-top: 2rem; }
+        .case-item h4 { color: white; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem; }
+        .case-item p { font-size: 0.95rem; color: #cbd5e1; }
+        .impact-number { font-size: 1.5rem; font-weight: 800; color: #34d399; display: block; margin-top: 0.5rem; }
+
+        /* LIGHTBOX STYLES (NEW) */
+        .lightbox-overlay {
+            position: fixed; inset: 0; background: rgba(0,0,0,0.95); z-index: 3000;
+            display: flex; justify-content: center; align-items: center;
+            opacity: 0; pointer-events: none; transition: opacity 0.3s ease;
+        }
+        .lightbox-overlay.active { opacity: 1; pointer-events: auto; }
+        .lightbox-container { position: relative; width: 90%; max-width: 1200px; height: 90vh; display: flex; justify-content: center; align-items: center; }
+        .lightbox-img { max-width: 100%; max-height: 100%; object-fit: contain; border-radius: 8px; box-shadow: 0 0 50px rgba(0,0,0,0.5); }
+        
+        .lightbox-nav-btn {
+            position: absolute; top: 50%; transform: translateY(-50%);
+            background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2);
+            color: white; width: 50px; height: 50px; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            cursor: pointer; transition: 0.2s; z-index: 10;
+        }
+        .lightbox-nav-btn:hover { background: var(--primary); color: #000; }
+        .lightbox-prev { left: 10px; }
+        .lightbox-next { right: 10px; }
+        .lightbox-close { 
+            position: absolute; top: 20px; right: 20px; 
+            background: transparent; border: none; color: white; 
+            cursor: pointer; z-index: 20; 
+        }
+
+        main { position: relative; z-index: 10; max-width: 1200px; margin: 0 auto; padding: 8rem 1.5rem 4rem; }
+        .section-gap { margin-bottom: 8rem; }
+        .section-title { text-align: center; font-size: 2.5rem; color: white; margin-bottom: 1rem; }
+        .section-subtitle-text { text-align: center; max-width: 700px; margin: 0 auto 3rem auto; font-size: 1.1rem; color: #cbd5e1; line-height: 1.8; }
+        .header { text-align: center; max-width: 800px; margin: 0 auto 5rem; }
+        .badge { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.5rem 1rem; border-radius: 99px; background: rgba(34, 211, 238, 0.1); border: 1px solid rgba(34, 211, 238, 0.3); color: var(--primary); font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 2rem; }
+        h1 { font-size: clamp(2.5rem, 5vw, 4.5rem); font-weight: 800; line-height: 1.1; margin-bottom: 1.5rem; color: white; }
+        .gradient-text { background: linear-gradient(135deg, var(--primary), var(--secondary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .subtitle { font-size: 1.2rem; color: var(--text-muted); line-height: 1.8; margin-bottom: 2rem; }
+
+        .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; margin-bottom: 8rem; border-top: 1px solid rgba(255,255,255,0.1); border-bottom: 1px solid rgba(255,255,255,0.1); padding: 2.5rem 0; }
+        .stat-card { background: transparent; border: none; padding: 0 1.5rem; text-align: left; position: relative; border-left: 1px solid rgba(255,255,255,0.1); transition: all 0.3s ease; }
+        .stat-card:first-child { border-left: none; padding-left: 0; }
+        .stat-card:hover { transform: translateY(-3px); }
+        .stat-value { font-size: 2rem; font-weight: 700; color: white; margin-bottom: 0.2rem; line-height: 1; letter-spacing: -0.02em; }
+        .stat-label { font-size: 0.8rem; color: var(--text-muted); font-weight: 500; text-transform: uppercase; letter-spacing: 1px; }
+
+        .approach-new-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; }
+        .approach-card { background: linear-gradient(145deg, #1e293b, #0f172a); padding: 2rem; border-radius: 1rem; border: 1px solid #334155; transition: all 0.3s; position: relative; overflow: hidden; }
+        .approach-card:hover { transform: translateY(-5px); border-color: var(--primary); }
+        .approach-card::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: radial-gradient(circle at top right, rgba(34,211,238,0.1), transparent 60%); opacity: 0; transition: opacity 0.3s; pointer-events: none; }
+        .approach-card:hover::before { opacity: 1; }
+        .approach-icon { width: 50px; height: 50px; background: rgba(255,255,255,0.05); border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 1.5rem; color: var(--primary); }
+        .approach-card h3 { color: white; margin-bottom: 0.75rem; font-size: 1.25rem; }
+        .approach-card p { color: var(--text-muted); font-size: 0.95rem; line-height: 1.6; }
+
+        .timeline { position: relative; border-left: 2px solid #334155; margin-left: 1rem; padding-left: 2rem; }
+        .timeline-item { margin-bottom: 3rem; position: relative; }
+        .timeline-dot { position: absolute; left: -2.6rem; top: 0.5rem; width: 1.2rem; height: 1.2rem; background: var(--bg-dark); border: 2px solid var(--primary); border-radius: 50%; box-shadow: 0 0 10px rgba(34, 211, 238, 0.5); }
+        .timeline-date { color: var(--primary); font-size: 0.9rem; font-weight: 600; margin-bottom: 0.5rem; }
+        .timeline-title { color: white; font-size: 1.5rem; margin-bottom: 0.5rem; }
+        .timeline-company { color: #cbd5e1; font-size: 1.1rem; margin-bottom: 1rem; display: block; }
+        .timeline-desc { color: var(--text-muted); }
+
+        .gallery-container { position: relative; height: 600px; perspective: 1500px; display: flex; flex-direction: column; align-items: center; }
+        #projects .section-title { margin-bottom: 4rem; }
+        .carousel-nav { margin-top: 2rem; display: flex; gap: 1rem; z-index: 50; }
+        .nav-arrow { background: rgba(30, 41, 59, 0.8); border: 1px solid #334155; color: white; width: 48px; height: 48px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: all 0.3s; }
+        .nav-arrow:hover { background: var(--primary); border-color: var(--primary); transform: scale(1.1); color: var(--bg-dark); }
+        .cards-wrapper { position: relative; width: 100%; height: 100%; display: flex; justify-content: center; align-items: center; transform-style: preserve-3d; }
+        .project-card-3d { position: absolute; width: min(800px, 90%); transition: all 0.8s cubic-bezier(0.165, 0.84, 0.44, 1); background: #1e293b; border-radius: 1rem; border: 1px solid #334155; overflow: hidden; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5); opacity: 0; pointer-events: none; }
+        .project-card-3d.active { opacity: 1; pointer-events: auto; z-index: 10; transform: translateX(0) scale(1) translateZ(0); filter: brightness(100%); }
+        .project-card-3d.prev { opacity: 0.4; z-index: 5; transform: translateX(-60%) scale(0.8) translateZ(-100px) rotateY(15deg); filter: brightness(50%) blur(2px); }
+        .project-card-3d.next { opacity: 0.4; z-index: 5; transform: translateX(60%) scale(0.8) translateZ(-100px) rotateY(-15deg); filter: brightness(50%) blur(2px); }
+        .project-card-3d.hidden { opacity: 0; z-index: 0; transform: scale(0.5) translateZ(-200px); }
+        
+        .browser-bar { background: #0f172a; padding: 0.75rem 1rem; display: flex; align-items: center; gap: 0.5rem; border-bottom: 1px solid #334155; }
+        .dots { display: flex; gap: 0.4rem; } .dot { width: 10px; height: 10px; border-radius: 50%; } .red { background: #ef4444; } .yellow { background: #eab308; } .green { background: #22c55e; }
+        .url { margin-left: 1rem; background: #1e293b; padding: 0.25rem 1rem; border-radius: 4px; font-size: 0.7rem; color: #64748b; flex-grow: 1; text-align: center; font-family: monospace; }
+        .card-content { display: flex; flex-direction: column; }
+        .card-img { width: 100%; height: 250px; object-fit: cover; }
+        .card-info { padding: 2rem; }
+        .card-title { font-size: 1.5rem; color: white; margin-bottom: 0.5rem; }
+        .card-subtitle { color: var(--primary); font-size: 0.875rem; font-weight: 700; text-transform: uppercase; margin-bottom: 1rem; display: block; }
+        .card-desc { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1.5rem; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+        .tech-stack { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1.5rem; }
+        .tech-pill { padding: 0.25rem 0.75rem; background: #0f172a; border: 1px solid #334155; border-radius: 4px; font-size: 0.75rem; color: #cbd5e1; }
+        .view-project-btn { display: inline-flex; align-items: center; gap: 0.5rem; background: transparent; border: none; color: white; text-decoration: none; font-weight: 600; border-bottom: 2px solid var(--primary); padding-bottom: 2px; cursor: pointer; font-size: 1rem; }
+        .view-project-btn:hover { color: var(--primary); }
+
+        .masonry-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); grid-auto-rows: 250px; gap: 1rem; }
+        .gallery-item:nth-child(3n+1) { grid-row: span 2; } .gallery-item:nth-child(4n+4) { grid-column: span 2; }
+        .gallery-item { position: relative; border-radius: 0.75rem; overflow: hidden; cursor: pointer; border: 1px solid #334155; opacity: 0; transform: translateY(50px); transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1); }
+        .gallery-item.reveal-active { opacity: 1; transform: translateY(0); }
+        .gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease; }
+        .gallery-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(15, 23, 42, 0.9), transparent); opacity: 0; transition: opacity 0.3s ease; display: flex; align-items: flex-end; padding: 1.5rem; }
+        .gallery-item:hover img { transform: scale(1.1); } .gallery-item:hover .gallery-overlay { opacity: 1; }
+        .gallery-text h3 { color: white; font-size: 1.1rem; margin-bottom: 0.25rem; } .gallery-text p { color: var(--primary); font-size: 0.8rem; }
+        
+        footer { border-top: 1px solid #1e293b; padding: 3rem 1rem; text-align: center; color: #64748b; }
+        .social-icons { display: flex; justify-content: center; gap: 1.5rem; margin-bottom: 1.5rem; }
+        .social-icons a { color: #94a3b8; transition: color 0.3s; }
+        .social-icons a:hover { color: var(--primary); }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 2.5rem; } .gallery-container { height: 500px; } .project-card-3d { width: 95%; } .card-img { height: 180px; }
+            .masonry-grid { grid-template-columns: 1fr; grid-auto-rows: 300px; } .gallery-item:nth-child(n) { grid-row: span 1; grid-column: span 1; }
+            .case-study-grid { grid-template-columns: 1fr; } .project-modal-header { height: 200px; }
+            .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 2rem 1rem; padding: 0 1rem; border: none; margin-bottom: 4rem; }
+            .stat-card { border-left: 2px solid var(--primary); margin-bottom: 1rem; padding-left: 1rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-effects">
+        <div class="blur-circle blur-1"></div>
+        <div class="blur-circle blur-2"></div>
+        <div class="grid-pattern"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav id="navbar">
+        <a href="#" class="logo" id="nav-logo"></a>
+        <button onclick="openContactModal()" class="hire-btn" id="nav-btn"></button>
+    </nav>
+
+    <!-- Modal Contact -->
+    <div id="contactModal" class="modal-overlay">
+        <div class="modal-content contact-box">
+            <button onclick="closeContactModal()" class="modal-close"><i data-lucide="x"></i></button>
+            <h3 style="color: white; font-size: 1.5rem; margin-bottom: 0.5rem;">Let's Connect</h3>
+            <p style="color: #94a3b8; font-size: 0.9rem;">Choose how you want to reach me:</p>
+            <div class="contact-options" id="contact-list-render"></div>
+        </div>
+    </div>
+
+    <!-- Modal Project (Detail Text) -->
+    <div id="projectModal" class="modal-overlay">
+        <div class="modal-content project-modal-box">
+            <button onclick="closeProjectModal()" class="modal-close"><i data-lucide="x"></i></button>
+            <div id="projectModalScrollable"><div id="projectModalContent"></div></div>
+        </div>
+    </div>
+
+    <!-- LIGHTBOX MODAL (Image Popup) -->
+    <div id="lightbox" class="lightbox-overlay">
+        <button class="lightbox-close" onclick="closeLightbox()"><i data-lucide="x" size="32"></i></button>
+        <button class="lightbox-nav-btn lightbox-prev" onclick="moveLightbox(-1)"><i data-lucide="chevron-left" size="32"></i></button>
+        <button class="lightbox-nav-btn lightbox-next" onclick="moveLightbox(1)"><i data-lucide="chevron-right" size="32"></i></button>
+        
+        <div class="lightbox-container">
+            <img id="lightbox-img" class="lightbox-img" src="" alt="Gallery Preview">
+        </div>
+    </div>
+
+    <main>
+        <header class="header">
+            <div class="badge" id="hero-badge"></div>
+            <h1 id="hero-title"></h1>
+            <p class="subtitle" id="hero-desc"></p>
+            <div style="display: flex; gap: 1rem; justify-content: center;">
+                <button onclick="document.getElementById('projects').scrollIntoView({behavior: 'smooth'})" class="hire-btn" style="background: transparent; border: 1px solid #334155; color: white;" id="hero-btn-1"></button>
+                <button onclick="openContactModal()" class="hire-btn" id="hero-btn-2"></button>
+            </div>
+        </header>
+
+        <div class="stats-grid" id="stats-render"></div>
+
+        <section class="section-gap">
+            <h2 class="section-title" id="approach-title"></h2>
+            <p class="section-subtitle-text" id="approach-desc"></p>
+            <div class="approach-new-grid" id="approach-render"></div>
+        </section>
+
+        <section class="section-gap">
+            <h2 class="section-title" style="text-align: left;" id="exp-title">Professional Experience</h2>
+            <div class="timeline" id="exp-render"></div>
+        </section>
+
+        <section class="section-gap" id="projects">
+            <h2 class="section-title" id="proj-title">Featured Case Studies</h2>
+            <div class="gallery-container">
+                <div class="cards-wrapper" id="cardsWrapper"></div>
+                <div class="carousel-nav">
+                    <button class="nav-arrow" onclick="prevProject()"><i data-lucide="chevron-left"></i></button>
+                    <button class="nav-arrow" onclick="nextProject()"><i data-lucide="chevron-right"></i></button>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-gap">
+            <h2 class="section-title" id="gallery-title">Visual Gallery</h2>
+            <div class="masonry-grid" id="masonryGrid"></div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="social-icons" id="footer-socials"></div>
+        <p id="footer-copyright"></p>
+    </footer>
+
+    <!-- LOAD DATA DATABASE -->
+    <script src="data.js"></script>
+
+    <script>
+        // --- LOGIC WEBSITE ---
+        let appData = portfolioData; 
+        let activeIndex = 0;
+        
+        // Gabungan Data untuk Gallery (Projects + Extra Gallery)
+        let fullGalleryList = [];
+        let currentLightboxIndex = 0;
+
+        document.addEventListener('DOMContentLoaded', () => {
+            renderSite();
+        });
+
+        function renderSite() {
+            // Navbar
+            document.getElementById('nav-logo').innerHTML = `${appData.nav.logo}<span>${appData.nav.accent}</span>`;
+            document.getElementById('nav-btn').innerText = appData.nav.btn;
+
+            // Hero
+            document.getElementById('hero-badge').innerHTML = `<i data-lucide="sparkles" size="14"></i> ${appData.hero.badge}`;
+            document.getElementById('hero-title').innerHTML = `${appData.hero.title1} <br> <span class="gradient-text">${appData.hero.title2}</span>`;
+            document.getElementById('hero-desc').innerHTML = appData.hero.desc;
+            document.getElementById('hero-btn-1').innerText = appData.hero.btn1;
+            document.getElementById('hero-btn-2').innerText = appData.hero.btn2;
+
+            // Stats
+            document.getElementById('stats-render').innerHTML = appData.stats.map(s => `
+                <div class="stat-card">
+                    <div class="stat-value">${s.val}</div>
+                    <div class="stat-label">${s.label}</div>
+                </div>
+            `).join('');
+
+            // Approach
+            document.getElementById('approach-title').innerText = appData.approach.title;
+            document.getElementById('approach-desc').innerText = appData.approach.desc;
+            document.getElementById('approach-render').innerHTML = appData.approach.cards.map(c => `
+                <div class="approach-card">
+                    <div class="approach-icon"><i data-lucide="${c.icon}" size="24"></i></div>
+                    <h3>${c.title}</h3>
+                    <p>${c.desc}</p>
+                </div>
+            `).join('');
+
+            // Experience
+            document.getElementById('exp-render').innerHTML = appData.experience.map(e => `
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-date">${e.year}</div>
+                    <h3 class="timeline-title">${e.title}</h3>
+                    <span class="timeline-company">${e.company}</span>
+                    <p class="timeline-desc">${e.desc}</p>
+                </div>
+            `).join('');
+
+            // Projects Carousel
+            renderCarousel();
+            
+            // Render Visual Gallery (Combine Project Images + Extra Gallery Images)
+            const projectImages = appData.projects.map(p => ({ img: p.img, title: p.title, subtitle: "Case Study" }));
+            const extraImages = appData.gallery || [];
+            fullGalleryList = [...projectImages, ...extraImages];
+            renderGallery(fullGalleryList);
+
+            // Contact
+            document.getElementById('contact-list-render').innerHTML = `
+                <a href="${appData.contact.wa}" target="_blank" class="contact-btn"><i data-lucide="message-circle" style="color: #25D366;"></i> <span>Chat on WhatsApp</span></a>
+                <a href="mailto:${appData.contact.email}" class="contact-btn"><i data-lucide="mail" style="color: #22d3ee;"></i> <span>Open Email App</span></a>
+                <button onclick="copyEmail()" class="contact-btn" id="copyBtn"><i data-lucide="copy" style="color: #f472b6;"></i> <span id="copyText">Copy Email Address</span></button>
+            `;
+
+            // Footer
+            document.getElementById('footer-copyright').innerHTML = appData.footer.copyright;
+            document.getElementById('footer-socials').innerHTML = `
+                <a href="${appData.footer.linkedin}"><i data-lucide="linkedin"></i></a>
+                <a href="${appData.footer.github}"><i data-lucide="github"></i></a>
+                <a href="mailto:${appData.contact.email}"><i data-lucide="mail"></i></a>
+                <a href="${appData.footer.instagram}"><i data-lucide="instagram"></i></a>
+            `;
+
+            lucide.createIcons();
+        }
+
+        function renderCarousel() {
+            const wrapper = document.getElementById('cardsWrapper');
+            wrapper.innerHTML = '';
+            appData.projects.forEach((project, index) => {
+                const card = document.createElement('div');
+                card.className = 'project-card-3d';
+                card.innerHTML = `
+                    <div class="browser-bar"><div class="dots"><div class="dot red"></div><div class="dot yellow"></div><div class="dot green"></div></div><div class="url">portfolio/${project.title.toLowerCase().replace(/\s/g, '-')}</div></div>
+                    <div class="card-content">
+                        <img src="${project.img}" class="card-img" alt="${project.title}">
+                        <div class="card-info">
+                            <span class="card-subtitle">${project.subtitle}</span>
+                            <h3 class="card-title">${project.title}</h3>
+                            <p class="card-desc">${project.desc}</p>
+                            <div class="tech-stack">${project.tech.split(',').map(t=>`<span class="tech-pill">${t.trim()}</span>`).join('')}</div>
+                            <button onclick="openProjectModal(${index})" class="view-project-btn">View Case Study <i data-lucide="arrow-right" size="16"></i></button>
+                        </div>
+                    </div>
+                `;
+                wrapper.appendChild(card);
+            });
+            updateCardStyles();
+        }
+
+        function updateCardStyles() {
+            const cards = document.querySelectorAll('.project-card-3d');
+            const total = appData.projects.length;
+            cards.forEach((card, index) => {
+                card.classList.remove('active', 'prev', 'next', 'hidden');
+                let offset = (index - activeIndex + total) % total;
+                if (offset > total / 2) offset -= total;
+                if (offset === 0) card.classList.add('active');
+                else if (offset === 1 || offset === -(total-1)) card.classList.add('next');
+                else if (offset === -1 || offset === (total-1)) card.classList.add('prev');
+                else card.classList.add('hidden');
+            });
+        }
+        function nextProject() { activeIndex = (activeIndex + 1) % appData.projects.length; updateCardStyles(); }
+        function prevProject() { activeIndex = (activeIndex - 1 + appData.projects.length) % appData.projects.length; updateCardStyles(); }
+        setInterval(() => { if(!document.querySelector('.project-card-3d.active:hover')) nextProject(); }, 5000);
+
+        // --- GALLERY RENDERING & LIGHTBOX ---
+        function renderGallery(items) {
+            const grid = document.getElementById('masonryGrid');
+            grid.innerHTML = '';
+            items.forEach((item, index) => {
+                const el = document.createElement('div');
+                el.className = 'gallery-item';
+                el.style.transitionDelay = `${(index % 3) * 100}ms`; 
+                // BUKA LIGHTBOX, BUKAN PROJECT MODAL
+                el.onclick = () => openLightbox(index); 
+                el.innerHTML = `<img src="${item.img}" alt="${item.title}"><div class="gallery-overlay"><div class="gallery-text"><h3>${item.title}</h3><p>${item.subtitle || ''}</p></div></div>`;
+                grid.appendChild(el);
+                setTimeout(() => el.classList.add('reveal-active'), 100);
+            });
+        }
+
+        // --- LIGHTBOX LOGIC ---
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+
+        function openLightbox(index) {
+            currentLightboxIndex = index;
+            updateLightboxContent();
+            lightbox.classList.add('active');
+            document.body.classList.add('modal-open');
+        }
+
+        function closeLightbox() {
+            lightbox.classList.remove('active');
+            document.body.classList.remove('modal-open');
+        }
+
+        function moveLightbox(direction) {
+            currentLightboxIndex = (currentLightboxIndex + direction + fullGalleryList.length) % fullGalleryList.length;
+            updateLightboxContent();
+        }
+
+        function updateLightboxContent() {
+            lightboxImg.src = fullGalleryList[currentLightboxIndex].img;
+        }
+
+        // --- OTHER MODALS ---
+        const contactModal = document.getElementById('contactModal');
+        const projectModal = document.getElementById('projectModal');
+        const body = document.body;
+
+        function openContactModal() { contactModal.classList.add('active'); body.classList.add('modal-open'); }
+        function closeContactModal() { contactModal.classList.remove('active'); body.classList.remove('modal-open'); }
+        
+        function openProjectModal(index) {
+            const data = appData.projects[index];
+            document.getElementById('projectModalContent').innerHTML = `
+                <div class="project-modal-header" style="background-image: url('${data.img}')"></div>
+                <div class="project-modal-body">
+                    <span style="color:var(--primary); font-weight:700; text-transform:uppercase;">${data.subtitle}</span>
+                    <h2 style="color:white; font-size:2rem;">${data.title}</h2>
+                    <div class="project-meta-tags" style="margin-top:1rem;">${data.tech.split(',').map(t => `<span class="project-tag">${t.trim()}</span>`).join('')}</div>
+                    <p style="color:#cbd5e1; margin-top:1rem; font-size:1.1rem;">${data.desc}</p>
+                    <div class="case-study-grid">
+                        <div class="case-item"><h4>Challenge</h4><p>${data.challenge}</p></div>
+                        <div class="case-item"><h4>Solution</h4><p>${data.solution}</p></div>
+                        <div class="case-item" style="grid-column:1/-1; background:rgba(34,211,238,0.05); padding:1rem; border-radius:0.5rem;"><h4 style="color:#34d399">Result</h4><p>${data.result}</p></div>
+                    </div>
+                </div>
+            `;
+            projectModal.classList.add('active'); body.classList.add('modal-open');
+            lucide.createIcons();
+        }
+        function closeProjectModal() { projectModal.classList.remove('active'); body.classList.remove('modal-open'); }
+        
+        // Window Click to Close
+        window.onclick = (e) => { 
+            if (e.target === contactModal) closeContactModal(); 
+            if (e.target === projectModal) closeProjectModal(); 
+            if (e.target === lightbox) closeLightbox(); 
+        };
+        
+        function copyEmail() { const email = appData.contact.email; navigator.clipboard.writeText(email).then(() => { const btn = document.getElementById('copyBtn'); const originalText = document.getElementById('copyText').innerText; document.getElementById('copyText').innerText = "Copied!"; btn.style.borderColor = "#22c55e"; btn.style.color = "#22c55e"; setTimeout(() => { document.getElementById('copyText').innerText = originalText; btn.style.borderColor = "#334155"; btn.style.color = "white"; }, 2000); }); }
+        
+        window.addEventListener('scroll', () => { const nav = document.getElementById('navbar'); if (window.scrollY > 50) nav.classList.add('scrolled'); else nav.classList.remove('scrolled'); });
+    </script>
+</body>
+</html>
