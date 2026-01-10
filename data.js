@@ -9,8 +9,9 @@ const portfolioData = {
         "title1": "Translating Data into",
         "title2": "Strategic Decisions",
         "desc": "Hi, I'm <strong>Luqfi Anita Rahman</strong>. I help companies reduce costs and increase revenue through advanced predictive modeling and interactive dashboards.",
-        "btn1": "View Work",
-        "btn2": "Work With Me"
+        "btn1": "View Project",
+        "btn2": "Work With Me",
+        "repo": "https://github.com/BOSEIT/Portofolio.git"
     },
     "contact": {
         "wa": "https://wa.me/6285183092062",
@@ -18,8 +19,8 @@ const portfolioData = {
     },
     "stats": [
         {
-            "val": "2+",
-            "label": "Years Experience"
+            "val": "1+",
+            "label": "Year Experience"
         },
         {
             "val": "15+",
@@ -32,6 +33,28 @@ const portfolioData = {
         {
             "val": "Python",
             "label": "Expertise"
+        }
+    ],
+    "dashboard": [
+        {
+            "url": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1000&auto=format&fit=crop",
+            "caption": ""
+        },
+        {
+            "url": "https://images.unsplash.com/photo-1543286386-2e659306cd6c?q=80&w=1000&auto=format&fit=crop",
+            "caption": ""
+        },
+        {
+            "url": "https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?q=80&w=1000&auto=format&fit=crop",
+            "caption": ""
+        },
+        {
+            "url": "https://images.unsplash.com/photo-1554224155-6726b3ff858f?q=80&w=1000&auto=format&fit=crop",
+            "caption": ""
+        },
+        {
+            "url": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1000&auto=format&fit=crop",
+            "caption": ""
         }
     ],
     "approach": {

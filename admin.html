@@ -7,16 +7,16 @@
     <!-- Icon Library -->
     <script src="https://unpkg.com/lucide@latest"></script>
     <style>
-        /* --- PREMIUM CSS VARIABLES --- */
+        /* --- PREMIUM WHITE VARIABLES --- */
         :root {
-            --bg-body: #020617;
-            --bg-card: #0f172a;
-            --bg-input: #1e293b;
-            --border: #334155;
-            --primary: #06b6d4; /* Cyan-500 */
-            --primary-hover: #0891b2;
-            --text-main: #f8fafc;
-            --text-muted: #94a3b8;
+            --bg-body: #f8fafc; /* Slate-50 */
+            --bg-card: #ffffff; 
+            --bg-input: #f1f5f9; /* Slate-100 */
+            --border: #e2e8f0;   /* Slate-200 */
+            --primary: #0891b2;  /* Cyan-600 */
+            --primary-hover: #0e7490;
+            --text-main: #0f172a; /* Slate-900 */
+            --text-muted: #64748b; /* Slate-500 */
             --danger: #ef4444;
             --success: #10b981;
         }
@@ -27,7 +27,7 @@
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; 
             background: var(--bg-body); 
             color: var(--text-main); 
-            padding-bottom: 120px; /* Space for floating button */
+            padding-bottom: 120px; 
             line-height: 1.6;
         }
 
@@ -35,7 +35,7 @@
 
         /* HEADER STYLE */
         header { text-align: center; margin-bottom: 3rem; padding-bottom: 2rem; border-bottom: 1px solid var(--border); }
-        h1 { font-size: 2rem; font-weight: 800; letter-spacing: -1px; margin-bottom: 0.5rem; background: linear-gradient(to right, #fff, #94a3b8); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        h1 { font-size: 2rem; font-weight: 800; letter-spacing: -1px; margin-bottom: 0.5rem; background: linear-gradient(to right, #0f172a, #64748b); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
         p.subtitle { color: var(--text-muted); font-size: 1rem; }
 
         /* CARD SECTIONS */
@@ -45,7 +45,7 @@
             border-radius: 16px; 
             padding: 2rem; 
             margin-bottom: 2rem; 
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
             transition: transform 0.2s;
         }
         
@@ -53,25 +53,25 @@
             display: flex; align-items: center; gap: 0.75rem; 
             margin-bottom: 2rem; padding-bottom: 1rem; border-bottom: 1px solid var(--border); 
         }
-        .section-header h2 { color: var(--primary); font-size: 1.25rem; font-weight: 600; margin: 0; }
-        .icon-box { background: rgba(6, 182, 212, 0.1); padding: 8px; border-radius: 8px; color: var(--primary); }
+        .section-header h2 { color: var(--primary); font-size: 1.25rem; font-weight: 700; margin: 0; }
+        .icon-box { background: #ecfeff; padding: 8px; border-radius: 8px; color: var(--primary); border: 1px solid #cffafe; }
 
         /* FORM ELEMENTS */
         .grid-2 { 
             display: grid; 
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* SMART GRID: No Overlap */
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
             gap: 1.5rem; 
         }
 
         .form-group { margin-bottom: 1.5rem; }
-        label { display: block; margin-bottom: 0.5rem; color: var(--text-muted); font-size: 0.85rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.5px; }
+        label { display: block; margin-bottom: 0.5rem; color: var(--text-muted); font-size: 0.85rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }
         
         input, textarea { 
             width: 100%; 
             padding: 0.85rem 1rem; 
             background: var(--bg-input); 
             border: 1px solid var(--border); 
-            color: white; 
+            color: var(--text-main); 
             border-radius: 8px; 
             font-size: 0.95rem;
             font-family: inherit; 
@@ -81,15 +81,15 @@
         input:focus, textarea:focus { 
             outline: none; 
             border-color: var(--primary); 
-            box-shadow: 0 0 0 3px rgba(6, 182, 212, 0.15); 
-            background: #1e293b;
+            background: #ffffff;
+            box-shadow: 0 0 0 3px rgba(8, 145, 178, 0.1); 
         }
         
         textarea { min-height: 100px; resize: vertical; }
 
         /* ARRAYS / LIST ITEMS */
         .item-box { 
-            background: #172033; /* Slightly lighter than input */
+            background: #f8fafc; 
             border: 1px solid var(--border); 
             padding: 1.5rem; 
             margin-bottom: 1.5rem; 
@@ -99,47 +99,49 @@
         
         .item-badge {
             position: absolute; top: -12px; left: 15px;
-            background: var(--primary); color: #000;
+            background: var(--primary); color: white;
             padding: 2px 10px; border-radius: 20px;
             font-size: 0.75rem; font-weight: 700;
             text-transform: uppercase;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
         }
 
         /* BUTTONS */
         .btn-add { 
-            background: transparent; border: 2px dashed var(--border); color: var(--primary);
+            background: #ffffff; border: 2px dashed var(--border); color: var(--primary);
             width: 100%; padding: 1rem; border-radius: 12px; font-weight: 600; cursor: pointer;
             display: flex; align-items: center; justify-content: center; gap: 0.5rem;
             transition: all 0.2s;
         }
-        .btn-add:hover { background: rgba(6, 182, 212, 0.05); border-color: var(--primary); }
+        .btn-add:hover { background: #f0f9ff; border-color: var(--primary); }
 
         .btn-delete { 
             position: absolute; top: 15px; right: 15px; 
-            background: rgba(239, 68, 68, 0.1); color: var(--danger); 
-            border: none; padding: 6px 12px; border-radius: 6px; 
+            background: #fef2f2; color: var(--danger); 
+            border: 1px solid #fee2e2; padding: 6px 12px; border-radius: 6px; 
             cursor: pointer; font-size: 0.8rem; font-weight: 600;
             transition: background 0.2s;
         }
-        .btn-delete:hover { background: var(--danger); color: white; }
+        .btn-delete:hover { background: var(--danger); color: white; border-color: var(--danger); }
         
         /* FLOATING SAVE BUTTON */
         .floating-bar {
             position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%);
-            background: rgba(15, 23, 42, 0.9); backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.9); backdrop-filter: blur(10px);
             border: 1px solid var(--border); padding: 0.75rem 1.5rem; border-radius: 100px;
             display: flex; align-items: center; gap: 1rem;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.3); z-index: 100;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1); z-index: 100;
         }
         
         .btn-save {
-            background: var(--primary); color: #020617; border: none;
+            background: var(--primary); color: white; border: none;
             padding: 0.75rem 2rem; border-radius: 50px; font-weight: 700;
             cursor: pointer; font-size: 1rem; display: flex; align-items: center; gap: 0.5rem;
             transition: transform 0.2s;
+            box-shadow: 0 4px 12px rgba(8, 145, 178, 0.3);
         }
         .btn-save:hover { transform: scale(1.05); background: var(--primary-hover); }
-        .status-text { font-size: 0.9rem; color: var(--text-muted); }
+        .status-text { font-size: 0.9rem; color: var(--text-muted); font-weight: 500; }
 
     </style>
 </head>
@@ -151,9 +153,7 @@
             <p class="subtitle">Manage content for <strong>data.js</strong> without touching code.</p>
         </header>
 
-        <div id="form-container">
-            <!-- Form content injected via JS -->
-        </div>
+        <div id="form-container"></div>
     </div>
 
     <!-- Floating Action Bar -->
@@ -168,7 +168,12 @@
     <script src="data.js"></script>
 
     <script>
+        // Init App Data from global variable in data.js
         let appData = portfolioData;
+
+        // Ensure new structures exist if loading old data
+        if (!appData.dashboard) appData.dashboard = [];
+        if (!appData.hero.repo) appData.hero.repo = "";
 
         function renderForm() {
             const container = document.getElementById('form-container');
@@ -215,7 +220,7 @@
                     </div>
                     <div class="grid-2">
                         <div class="form-group">
-                            <label>Headline Line 1 (White)</label>
+                            <label>Headline Line 1 (Main)</label>
                             <input id="hero-t1" value="${appData.hero.title1}">
                         </div>
                         <div class="form-group">
@@ -227,9 +232,14 @@
                         <label>Hero Description</label>
                         <textarea id="hero-desc">${appData.hero.desc}</textarea>
                     </div>
-                    <div class="grid-2">
-                        <div class="form-group"><label>Button 1 (Outline)</label><input id="hero-btn1" value="${appData.hero.btn1}"></div>
-                        <div class="form-group"><label>Button 2 (Solid)</label><input id="hero-btn2" value="${appData.hero.btn2}"></div>
+                    
+                    <div style="background:#f0f9ff; padding:1.5rem; border-radius:12px; border:1px solid #bae6fd; margin-bottom:1.5rem;">
+                         <label style="color:#0369a1; margin-bottom:10px;">Hero Buttons & Links</label>
+                         <div class="grid-2">
+                            <div class="form-group"><label>Button 1 Label (Outline)</label><input id="hero-btn1" value="${appData.hero.btn1}"></div>
+                            <div class="form-group"><label>Button 2 Label (Solid)</label><input id="hero-btn2" value="${appData.hero.btn2}"></div>
+                        </div>
+                        <div class="form-group" style="margin-bottom:0;"><label>Repository Link (GitHub)</label><input id="hero-repo" value="${appData.hero.repo || ''}" placeholder="https://github.com/..."></div>
                     </div>
                 </div>
 
@@ -241,7 +251,7 @@
                     </div>
                     <div class="grid-2">
                         ${appData.stats.map((s, i) => `
-                            <div style="background:#172033; padding:1rem; border-radius:8px; border:1px solid #334155;">
+                            <div style="background:#f1f5f9; padding:1rem; border-radius:8px; border:1px solid #e2e8f0;">
                                 <label style="margin-bottom:5px;">Stat ${i+1}</label>
                                 <div style="display:flex; gap:10px;">
                                     <input id="stat-val-${i}" value="${s.val}" placeholder="Value" style="width:40%;">
@@ -251,8 +261,23 @@
                         `).join('')}
                     </div>
                 </div>
+                
+                <!-- 4. DASHBOARD (NEW SECTION) -->
+                <div class="section">
+                    <div class="section-header">
+                        <div class="icon-box"><i data-lucide="layout-dashboard"></i></div>
+                        <h2>Dashboard Gallery (Modal)</h2>
+                    </div>
+                    <p style="color:#64748b; font-size:0.9rem; margin-bottom:1.5rem;">
+                        Images shown in the "My Dashboard" popup. Ideal for screenshots of tools, activities, or team photos.
+                    </p>
+                    <div id="dashboard-list"></div>
+                    <button class="btn-add" onclick="addItem('dashboard')">
+                        <i data-lucide="plus"></i> Add Dashboard Image
+                    </button>
+                </div>
 
-                <!-- 4. MY APPROACH -->
+                <!-- 5. MY APPROACH -->
                 <div class="section">
                     <div class="section-header">
                         <div class="icon-box"><i data-lucide="lightbulb"></i></div>
@@ -261,11 +286,11 @@
                     <div class="form-group"><label>Section Title</label><input id="appr-title" value="${appData.approach.title}"></div>
                     <div class="form-group"><label>Section Description</label><textarea id="appr-desc">${appData.approach.desc}</textarea></div>
                     
-                    <h3 style="color:var(--primary); margin: 2rem 0 1rem 0; font-size:1rem; text-transform:uppercase; letter-spacing:1px;">Approach Cards</h3>
+                    <h3 style="color:var(--primary); margin: 2rem 0 1rem 0; font-size:1rem; text-transform:uppercase; letter-spacing:1px; font-weight:700;">Approach Cards</h3>
                     <div id="approach-list"></div>
                 </div>
 
-                <!-- 5. EXPERIENCE -->
+                <!-- 6. EXPERIENCE -->
                 <div class="section">
                     <div class="section-header">
                         <div class="icon-box"><i data-lucide="briefcase"></i></div>
@@ -277,7 +302,7 @@
                     </button>
                 </div>
 
-                <!-- 6. PROJECTS -->
+                <!-- 7. PROJECTS -->
                 <div class="section">
                     <div class="section-header">
                         <div class="icon-box"><i data-lucide="layers"></i></div>
@@ -289,13 +314,13 @@
                     </button>
                 </div>
 
-                <!-- 8. VISUAL GALLERY (EXTRA) -->
+                <!-- 8. VISUAL GALLERY -->
                 <div class="section">
                     <div class="section-header">
                         <div class="icon-box"><i data-lucide="image"></i></div>
-                        <h2>Visual Gallery (Extra Images)</h2>
+                        <h2>Visual Gallery (Footer Grid)</h2>
                     </div>
-                    <p style="color:#94a3b8; font-size:0.9rem; margin-bottom:1.5rem;">
+                    <p style="color:#64748b; font-size:0.9rem; margin-bottom:1.5rem;">
                         Note: Images from "Projects" above are automatically included. Add extra images here (e.g. certificates, activities).
                     </p>
                     <div id="gallery-list"></div>
@@ -304,7 +329,7 @@
                     </button>
                 </div>
 
-                <!-- 7. FOOTER LINKS -->
+                <!-- 9. FOOTER LINKS -->
                 <div class="section">
                     <div class="section-header">
                         <div class="icon-box"><i data-lucide="share-2"></i></div>
@@ -324,6 +349,25 @@
         }
 
         function renderArrays() {
+            // DASHBOARD ITEMS (NEW)
+            const dashboardData = appData.dashboard || [];
+            document.getElementById('dashboard-list').innerHTML = dashboardData.map((d, i) => `
+                <div class="item-box">
+                    <button class="btn-delete" onclick="deleteItem('dashboard', ${i})">Delete</button>
+                    <div class="grid-2">
+                        <div class="form-group">
+                            <label>Image URL</label>
+                            <input id="dash-url-${i}" value="${d.url}" placeholder="https://...">
+                        </div>
+                        <div class="form-group">
+                            <label>Caption</label>
+                            <input id="dash-cap-${i}" value="${d.caption}" placeholder="Activity description">
+                        </div>
+                    </div>
+                    ${d.url ? `<img src="${d.url}" style="height:60px; border-radius:4px; object-fit:cover; margin-top:5px; border:1px solid #ddd;">` : ''}
+                </div>
+            `).join('');
+
             // APPROACH CARDS
             document.getElementById('approach-list').innerHTML = appData.approach.cards.map((c, i) => `
                 <div class="item-box">
@@ -361,8 +405,8 @@
                     <div class="form-group"><label>Tech Stack</label><input id="proj-tech-${i}" value="${p.tech}"></div>
                     <div class="form-group"><label>Short Description (Card)</label><textarea id="proj-desc-${i}" style="height:60px;">${p.desc}</textarea></div>
                     
-                    <div style="background:#0f172a; padding:1rem; border-radius:8px; border:1px solid #334155; margin-top:1rem;">
-                        <label style="color:var(--primary); margin-bottom:1rem;">--- Modal Details (Popup Content) ---</label>
+                    <div style="background:#f1f5f9; padding:1.5rem; border-radius:8px; border:1px solid #e2e8f0; margin-top:1rem;">
+                        <label style="color:var(--primary); margin-bottom:1rem; border-bottom:1px solid #e2e8f0; padding-bottom:0.5rem;">--- Modal Details (Popup Content) ---</label>
                         <div class="form-group"><label>The Challenge</label><textarea id="proj-chal-${i}">${p.challenge}</textarea></div>
                         <div class="form-group"><label>The Solution</label><textarea id="proj-sol-${i}">${p.solution}</textarea></div>
                         <div class="form-group"><label>Key Result</label><input id="proj-res-${i}" value="${p.result}"></div>
@@ -370,7 +414,7 @@
                 </div>
             `).join('');
 
-            // GALLERY (EXTRA)
+            // GALLERY
             const galleryData = appData.gallery || [];
             document.getElementById('gallery-list').innerHTML = galleryData.map((g, i) => `
                 <div class="item-box">
@@ -379,6 +423,7 @@
                         <div class="form-group"><label>Image URL</label><input id="gal-img-${i}" value="${g.img}"></div>
                         <div class="form-group"><label>Caption / Title</label><input id="gal-title-${i}" value="${g.title}"></div>
                     </div>
+                    ${g.img ? `<img src="${g.img}" style="height:60px; border-radius:4px; object-fit:cover; margin-top:5px; border:1px solid #ddd;">` : ''}
                 </div>
             `).join('');
             
@@ -401,11 +446,22 @@
             appData.hero.desc = document.getElementById('hero-desc').value;
             appData.hero.btn1 = document.getElementById('hero-btn1').value;
             appData.hero.btn2 = document.getElementById('hero-btn2').value;
+            // NEW: Repo Link
+            appData.hero.repo = document.getElementById('hero-repo').value;
 
             // Stats
             appData.stats.forEach((_, i) => {
                 appData.stats[i].val = document.getElementById(`stat-val-${i}`).value;
                 appData.stats[i].label = document.getElementById(`stat-lbl-${i}`).value;
+            });
+
+            // NEW: Dashboard
+            if (!appData.dashboard) appData.dashboard = [];
+            appData.dashboard.forEach((_, i) => {
+                if(document.getElementById(`dash-url-${i}`)) {
+                    appData.dashboard[i].url = document.getElementById(`dash-url-${i}`).value;
+                    appData.dashboard[i].caption = document.getElementById(`dash-cap-${i}`).value;
+                }
             });
 
             // Approach
@@ -461,6 +517,11 @@
             syncData();
             if(type === 'experience') appData.experience.push({year:'2024', title:'New Role', company:'Company', desc:'Details...'});
             if(type === 'projects') appData.projects.push({id: Date.now(), title:'New Project', subtitle:'Category', img:'', tech:'Python, SQL', desc:'Short desc...', challenge:'Challenge...', solution:'Solution...', result:'Result...'});
+            // NEW: Add Dashboard Item
+            if(type === 'dashboard') {
+                if(!appData.dashboard) appData.dashboard = [];
+                appData.dashboard.push({url:'', caption:'New Activity'});
+            }
             if(type === 'gallery') {
                 if(!appData.gallery) appData.gallery = [];
                 appData.gallery.push({img:'', title:'New Image'});
