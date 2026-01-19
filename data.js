@@ -15,7 +15,7 @@ const portfolioData = {
         "btn1": "Explore Case Studies",
         "btn2": "My Tech Stack",
         "repo": "https://github.com/luqfianita8317?tab=repositories",
-        "enableBg": false,
+        "enableBg": true,
         "bgImg": "https://images.unsplash.com/photo-1557683316-973673baf926?q=80&w=2029&auto=format&fit=crop"
     },
     "contact": {
