@@ -1,4 +1,7 @@
 const portfolioData = {
+    "config": {
+        "statsFontSize": "1rem"
+    },
     "nav": {
         "logo": "LUQFI",
         "accent": "ANITA",
@@ -8,10 +11,12 @@ const portfolioData = {
         "badge": "Data Analytics & Machine Learning",
         "title1": "Transforming Data into",
         "title2": "Strategic Business Growth",
-        "desc": "Hi, I’m <strong>Luqfi Anita Rahman</strong>, I can help companies reduce costs and increase revenue through advanced. predictive modeling and interactive dashboards.<br><br>My journey into the world of data began with an intensive 45-day program at PPKD South Jakarta, where I honed my technical skills and developed a business-first mindset. I focus on bridging the gap between complex analytics and strategic growth.",
+        "desc": "Hi, I’m <strong>Luqfi Anita Rahman</strong>, I can help companies reduce costs and increase revenue through advanced predictive modeling and interactive dashboards.<br><br>My journey into the world of data began with an intensive 45-day program at PPKD South Jakarta, where I honed my technical skills and developed a business-first mindset.",
         "btn1": "Explore Case Studies",
         "btn2": "My Tech Stack",
-        "repo": "https://github.com/luqfianita8317?tab=repositories"
+        "repo": "https://github.com/luqfianita8317?tab=repositories",
+        "enableBg": false,
+        "bgImg": "https://images.unsplash.com/photo-1557683316-973673baf926?q=80&w=2029&auto=format&fit=crop"
     },
     "contact": {
         "wa": "https://wa.me/6285183092062",
@@ -23,11 +28,11 @@ const portfolioData = {
             "label": "Deep-Dive Case Studies"
         },
         {
-            "val": "149k+",
+            "val": "150k+",
             "label": "Transaction Rows Analyzed"
         },
         {
-            "val": "SQL/Python",
+            "val": "DDM Method",
             "label": "Technical Stack"
         },
         {
@@ -37,20 +42,28 @@ const portfolioData = {
     ],
     "dashboard": [
         {
-            "url": "https://drive.google.com/uc?export=view&id=1dh5cI8anmTK-PRuU5t_IsPgDDue69ohj",
-            "caption": "Executive Summary Dashboard"
+            "url": "https://github.com/BOSEIT/Portofolio/blob/main/assets/MINIMARKET%20DASHBOARD.png?raw=true",
+            "caption": "Dashboard Minimarket"
         },
         {
-            "url": "https://images.unsplash.com/photo-1543286386-2e659306cd6c?q=80&w=1000&auto=format&fit=crop",
-            "caption": "SQL Query Optimization Cert"
+            "url": "https://github.com/BOSEIT/Portofolio/blob/main/assets/Dashboard%20Kuisioner%20Siswa.png?raw=true",
+            "caption": "Dashboard Kuisioner Siswa"
         },
         {
-            "url": "https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?q=80&w=1000&auto=format&fit=crop",
-            "caption": "Python Bootcamp Certificate"
+            "url": "https://github.com/BOSEIT/Portofolio/blob/main/assets/Dashboard%20TAX.png?raw=true",
+            "caption": "Dashboard TAX Brown"
         },
         {
-            "url": "https://images.unsplash.com/photo-1554224155-6726b3ff858f?q=80&w=1000&auto=format&fit=crop",
-            "caption": "Data Visualization Workshop"
+            "url": "https://github.com/BOSEIT/Portofolio/blob/main/assets/PBIDesktop_IX74fjTs3W.png?raw=true",
+            "caption": "Dashboard Sales Performance"
+        },
+        {
+            "url": "https://github.com/BOSEIT/Portofolio/blob/main/assets/PBIDesktop_PUEfpkm4QX.png?raw=true",
+            "caption": "Dashboard Trasanksi Penjualan"
+        },
+        {
+            "url": "https://github.com/BOSEIT/Portofolio/blob/main/assets/PBIDesktop_ZQYTJTUkjx.png?raw=true",
+            "caption": "Dashboard Invoice Detail"
         }
     ],
     "approach": {
@@ -60,7 +73,7 @@ const portfolioData = {
             {
                 "icon": "brain-circuit",
                 "title": "Machine Learning & Advanced Analytics",
-                "desc": "Hands-on experience implementing diverse algorithms, including Random Forest (98% acc), Classification for risk modeling, Regression for price forecasting, Clustering for Algorithm, dan Association Rule for Learning."
+                "desc": "Hands-on experience implementing diverse algorithms, including Random Forest (98% acc), Classification for risk modeling, Regression for price forecasting, Clustering Algorithm, dan Association Rule Learning."
             },
             {
                 "icon": "message-square-text",
@@ -93,7 +106,7 @@ const portfolioData = {
             "icon": "bar-chart-4"
         },
         {
-            "name": "Excel (Pivot/VBA)",
+            "name": "Excel (Pivot/Powe Query)",
             "icon": "table"
         },
         {
@@ -219,20 +232,8 @@ const portfolioData = {
             "challenge": "Generic marketing blasts were yielding low conversion rates. Needed to differentiate between 'High Spenders' and 'Budget Shoppers'.",
             "solution": "Applied the Elbow Method to determine the optimal number of clusters (K=5) based on Annual Income vs. Spending Score. Removed outliers before training.",
             "result": "Identified a critical 'High Income, Low Spend' segment. Recommended a 'Value-Based Campaign' for this group to increase conversion."
-        },
-        {
-            "id": 10,
-            "title": "KPP Mining Mascot Design",
-            "subtitle": "Brand Identity • Corporate Design",
-            "desc": "Winner of KPP Mining Astra Mascot Design Competition. Combining corporate values with modern art.",
-            "tech": "Adobe Illustrator, Branding Strategy",
-            "img": "https://images.unsplash.com/photo-1626785774573-4b799314348d?q=80&w=1000&auto=format&fit=crop",
-            "challenge": "Create a mascot that visually embodies 'Strength', 'Technology', and 'Future-Readiness' moving away from traditional industrial imagery.",
-            "solution": "Designed a Robot-Themed Mascot utilizing the official corporate color palette, focusing on clean lines and futuristic aesthetics.",
-            "result": "Selected as the 1st Place Winner from 50+ entries. The mascot was adopted for internal corporate communications."
         }
     ],
-    "mlProjects": [],
     "certificates": [
         {
             "title": "SQL Query Optimization",
