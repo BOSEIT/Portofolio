@@ -5,12 +5,12 @@ const portfolioData = {
         "btn": "Hire Me"
     },
     "hero": {
-        "badge": "Data Science & Analytics",
-        "title1": "Translating Data into",
-        "title2": "Strategic Decisions",
-        "desc": "Hi, I'm <strong>Luqfi Anita Rahman</strong>. I help companies reduce costs and increase revenue through advanced predictive modeling and interactive dashboards.",
-        "btn1": "View Project",
-        "btn2": "Work With Me",
+        "badge": "Data Analytics & Machine Learning",
+        "title1": "Transforming Data into",
+        "title2": "Strategic Business Growth",
+        "desc": "Hi, I’m <strong>Luqfi Anita Rahman</strong>, a Data Analyst driven by a curiosity to uncover the 'why' behind the numbers.<br><br>My journey into the world of data began with an intensive 45-day program at PPKD South Jakarta, where I honed my technical skills and developed a business-first mindset. I focus on bridging the gap between complex analytics and strategic growth.",
+        "btn1": "Explore Case Studies",
+        "btn2": "My Tech Stack",
         "repo": "https://github.com/BOSEIT/Portofolio.git"
     },
     "contact": {
@@ -19,160 +19,239 @@ const portfolioData = {
     },
     "stats": [
         {
-            "val": "1+",
-            "label": "Year Experience"
+            "val": "30+",
+            "label": "Deep-Dive Case Studies"
         },
         {
-            "val": "15+",
-            "label": "Projects Delivered"
+            "val": "149k+",
+            "label": "Transaction Rows Analyzed"
         },
         {
-            "val": "$50k+",
-            "label": "Revenue Impact"
+            "val": "SQL/Python",
+            "label": "Technical Stack"
         },
         {
-            "val": "Python",
-            "label": "Expertise"
+            "val": "98%",
+            "label": "Model Accuracy Achieved"
         }
     ],
     "dashboard": [
         {
-            "url": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1000&auto=format&fit=crop",
-            "caption": ""
+            "url": "https://drive.google.com/uc?export=view&id=1dh5cI8anmTK-PRuU5t_IsPgDDue69ohj",
+            "caption": "Executive Summary Dashboard"
         },
         {
             "url": "https://images.unsplash.com/photo-1543286386-2e659306cd6c?q=80&w=1000&auto=format&fit=crop",
-            "caption": ""
+            "caption": "SQL Query Optimization Cert"
         },
         {
             "url": "https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?q=80&w=1000&auto=format&fit=crop",
-            "caption": ""
+            "caption": "Python Bootcamp Certificate"
         },
         {
             "url": "https://images.unsplash.com/photo-1554224155-6726b3ff858f?q=80&w=1000&auto=format&fit=crop",
-            "caption": ""
-        },
-        {
-            "url": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1000&auto=format&fit=crop",
-            "caption": ""
+            "caption": "Data Visualization Workshop"
         }
     ],
     "approach": {
-        "title": "My Approach",
-        "desc": "I don't just build models; I provide solutions. Every project I undertake culminates in actionable business recommendations aimed at optimizing operations, increasing revenue, and solving real-world challenges.",
+        "title": "My Technical Toolkit",
+        "desc": "I don’t just build models; I provide solutions. Every project I undertake culminates in actionable business recommendations aimed at optimizing operations, increasing revenue, and solving real-world challenges.",
         "cards": [
             {
                 "icon": "brain-circuit",
-                "title": "Machine Learning",
-                "desc": "Clustering, Classification, Regression for predictive modeling to forecast trends and automate decisions."
+                "title": "Machine Learning & Advanced Analytics",
+                "desc": "Hands-on experience implementing diverse algorithms, including Random Forest (98% acc), Classification for risk modeling, and Regression for price forecasting."
             },
             {
                 "icon": "message-square-text",
-                "title": "NLP Analysis",
-                "desc": "Sentiment Analysis to understand customer behavior from text, reviews, and social media data."
+                "title": "Natural Language Processing (NLP)",
+                "desc": "Specializing in extracting meaning from unstructured text, particularly through Sentiment Analysis to understand customer behavior and public perception on Social Media."
             },
             {
-                "icon": "pie-chart",
-                "title": "Visualization",
-                "desc": "Interactive Power BI dashboards for KPIs & Sales tracking that tell a clear story behind the numbers."
+                "icon": "bar-chart-3",
+                "title": "Data Visualization & Dashboards",
+                "desc": "Translating complex datasets into intuitive stories. My portfolio includes Sales Performance Dashboards and Tax Compliance monitoring to identify growth opportunities."
             },
             {
                 "icon": "database",
-                "title": "Advanced SQL",
-                "desc": "Complex JOINs, CTEs, and Window Functions for robust data mining and efficient ETL processes."
+                "title": "Advanced SQL & Web Scraping",
+                "desc": "Strong command of SQL for data retrieval and Python Web Scraping to gather external market intelligence (competitor pricing, etc)."
             }
         ]
     },
-    "experience": [
+    "tools": [
         {
-            "year": "2023 - Present",
-            "title": "Data Analyst Freelancer",
-            "company": "Upwork & Remote",
-            "desc": "Delivered 10+ end-to-end data projects for international clients. Specialized in creating automated Power BI dashboards and Python scripts for data cleaning, reducing manual reporting time by 40%."
+            "name": "SQL (PostgreSQL)",
+            "icon": "database"
         },
         {
-            "year": "2022 - 2023",
-            "title": "Junior Data Scientist",
-            "company": "Tech Startup Indonesia",
-            "desc": "Collaborated with marketing teams to build Customer Churn Prediction models. Improved retention strategies resulting in a 5% decrease in churn rate within 6 months."
+            "name": "Python",
+            "icon": "code-2"
+        },
+        {
+            "name": "Power BI",
+            "icon": "bar-chart-4"
+        },
+        {
+            "name": "Excel (Pivot/VBA)",
+            "icon": "table"
+        },
+        {
+            "name": "Scikit-Learn",
+            "icon": "brain"
+        },
+        {
+            "name": "Web Scraping",
+            "icon": "globe"
+        },
+        {
+            "name": "Pandas & NumPy",
+            "icon": "file-json"
         }
     ],
     "projects": [
         {
+            "id": 11,
+            "title": "Minimarket Sales & Profitability",
+            "subtitle": "Power BI • Business Intelligence • Sales Report",
+            "desc": "Comprehensive 2024 Sales Performance & Profitability Analysis for Minimarket Operations.",
+            "tech": "Power BI, Data Visualization, Data Analysis",
+            "img": "https://images.unsplash.com/photo-1591696205602-2f950c417cb9?q=80&w=1000&auto=format&fit=crop",
+            "challenge": "The minimarket required a holistic view of its 2024 performance, including identifying top revenue drivers, margin leaks, and optimal operating hours.",
+            "solution": "Developed a comprehensive Power BI Report covering: Background & Problem Statement, Objectives, Data Sources, and Analysis Methods. Implemented detailed visualizations for Key Findings.",
+            "result": "Key Findings included identification of Best-Selling Products, Highest Revenue/Margin Categories, Peak Transaction Hours, and Payment Method Distribution. Delivered Strategic Business Recommendations for Products, Operations, Payments, and Branch Management."
+        },
+        {
             "id": 1,
-            "title": "Coffee Shop Sales Analysis",
-            "subtitle": "SQL & Power BI Analysis",
-            "desc": "Strategic analysis of 149k transaction records to identify peak sales hours and product performance.",
-            "tech": "SQL, Power BI, Data Modelling",
+            "title": "Coffee Shop Sales Optimization",
+            "subtitle": "SQL • Operational Analytics • 149k Rows",
+            "desc": "Comprehensive analysis of 149,116 transaction records to solve operational bottlenecks and revenue dips.",
+            "tech": "SQL (PostgreSQL), Data Modeling, Window Functions",
             "img": "https://images.unsplash.com/photo-1497935586351-b67a49e012bf?q=80&w=1000&auto=format&fit=crop",
-            "challenge": "The client was experiencing a 20% drop in revenue during afternoon hours but lacked granular data to understand why.",
-            "solution": "I performed a time-series analysis using SQL to segment sales by hour and category. I then built an interactive dashboard to visualize product affinity.",
-            "result": "Identified that 'Pastries' were underpromoted at 3 PM. Recommended a 'Happy Hour' bundle which increased afternoon revenue by 15%."
+            "challenge": "The business faced unidentified revenue drops on weekends and lacked visibility into 'Rush Hours' for efficient staff scheduling. Inventory management for top-selling items was reactive rather than proactive.",
+            "solution": "Performed rigorous SQL analysis using Aggregate Functions to map hourly transaction volumes and Product Affinity. Validated data integrity (zero NULLs on IDs) before processing.",
+            "result": "Identified 10:00 AM as the absolute Peak Hour and 'Earl Grey Rg' as the #1 volume seller (4,708 units). Recommended a 'Weekend Bundling' strategy to boost Saturday traffic (the lowest day) and mandated a safety-stock policy for Coffee (> $269k Revenue contribution)."
         },
         {
             "id": 2,
-            "title": "Executive Sales Dashboard",
-            "subtitle": "Business Intelligence",
-            "desc": "A comprehensive dashboard for C-Level executives to monitor regional KPIs and monthly growth.",
-            "tech": "Power BI, DAX, Excel",
-            "img": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1000&auto=format&fit=crop",
-            "challenge": "Executives were using 10 different spreadsheets to track performance, leading to data inconsistency and slow decision making.",
-            "solution": "Created a unified Power BI dashboard connecting directly to their CRM, using complex DAX measures for YoY growth calculations.",
-            "result": "Reduced reporting time from 5 days to 2 hours per month. Improved data accuracy to 99%."
+            "title": "Bali Hotel Price Intelligence",
+            "subtitle": "Python • Web Scraping • Market Analysis",
+            "desc": "Automated market intelligence tool predicting hotel pricing trends in Bali to aid in competitive strategy.",
+            "tech": "Python, Web Scraping, Random Forest Regressor",
+            "img": "https://images.unsplash.com/photo-1537996194471-e657df975ab4?q=80&w=1000&auto=format&fit=crop",
+            "challenge": "Hotel owners and travel agencies struggled to set competitive pricing due to fluctuating market demand and lack of real-time competitor data.",
+            "solution": "Developed a scraping pipeline to harvest real-time hotel data. Implemented a Random Forest Regressor model to identify key price drivers (location, amenities, ratings).",
+            "result": "Built a robust pricing model with high predictive accuracy, enabling stakeholders to adjust rates dynamically based on market positioning rather than guesswork."
         },
         {
             "id": 3,
-            "title": "Customer Churn Prediction",
-            "subtitle": "Machine Learning (Classification)",
-            "desc": "Predictive model to identify high-risk customers in a telecom company using Random Forest.",
-            "tech": "Python, Scikit-Learn, Pandas",
-            "img": "https://images.unsplash.com/photo-1551033406-611cf9a28f67?q=80&w=1000&auto=format&fit=crop",
-            "challenge": "The company was losing customers to competitors but didn't know who was likely to leave until it was too late.",
-            "solution": "Built a Random Forest Classifier trained on 2 years of user behavior data. Identified top features: 'Contract Type' and 'Monthly Charges'.",
-            "result": "Achieved 85% accuracy. The marketing team used this list to target retention offers, saving approx $10k/month."
+            "title": "Clinical Decision Support System",
+            "subtitle": "Healthcare • Random Forest • 98% Accuracy",
+            "desc": "Machine learning model designed to assist medical professionals in early screening of Chronic Kidney Disease (CKD).",
+            "tech": "Python, Random Forest Classifier, Pandas",
+            "img": "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?q=80&w=1000&auto=format&fit=crop",
+            "challenge": "Early detection of Chronic Kidney Disease is critical but often delayed due to manual screening processes and subtle early symptoms.",
+            "solution": "Engineered a Random Forest classification model trained on patient bio-markers. Focused on minimizing False Negatives to ensure no high-risk patient is overlooked.",
+            "result": "Achieved a 98% diagnostic accuracy rate. This tool serves as a reliable 'second opinion' system, potentially reducing diagnosis time and healthcare costs."
         },
         {
             "id": 4,
-            "title": "Social Media Sentiment",
-            "subtitle": "NLP & Text Mining",
-            "desc": "Analyzing 50k+ tweets to gauge public brand sentiment during a product launch.",
-            "tech": "Python, NLTK, Seaborn",
-            "img": "https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?q=80&w=1000&auto=format&fit=crop",
-            "challenge": "The brand launched a new UI and needed immediate feedback from social media beyond just 'likes'.",
-            "solution": "Scraped Twitter data and applied VADER sentiment analysis to categorize feedback into Positive, Neutral, and Negative.",
-            "result": "Detected a specific bug complaint in 'Negative' cluster early, allowing the dev team to fix it within 24 hours."
+            "title": "YouTube Sentiment Analysis",
+            "subtitle": "NLP • Brand Reputation • Naïve Bayes",
+            "desc": "Analyzing public opinion and viewer sentiment from YouTube comment sections to guide content strategy.",
+            "tech": "Python, Naïve Bayes, NLTK (Tokenization/Stopwords)",
+            "img": "https://images.unsplash.com/photo-1611162617474-5b21e879e113?q=80&w=1000&auto=format&fit=crop",
+            "challenge": "Brands often struggle to manually process thousands of user comments to gauge the true reception of their content or products.",
+            "solution": "Built an NLP pipeline performing Text Preprocessing (cleaning, stemming) and applied Naïve Bayes to classify sentiments (Positive/Negative/Neutral).",
+            "result": "Provided clear metrics on audience engagement, helping content creators identify which topics resonate most positively with their demographic."
         },
         {
             "id": 5,
-            "title": "Fiscal Tax Dashboard",
-            "subtitle": "Finance Analytics",
-            "desc": "Monitoring fiscal health and streamlining tax reporting processes for a local government agency.",
-            "tech": "Power BI, SQL Server",
-            "img": "https://images.unsplash.com/photo-1554224155-6726b3ff858f?q=80&w=1000&auto=format&fit=crop",
-            "challenge": "Manual data entry caused frequent errors in tax revenue reporting.",
-            "solution": "Automated the data pipeline from SQL Server to Power BI with scheduled refreshes.",
-            "result": "Eliminated manual entry errors and provided real-time visibility into tax collection deficits."
+            "title": "Loan Eligibility Risk Model",
+            "subtitle": "Fintech • Risk Management • Decision Tree",
+            "desc": "Predictive model to automate loan approval processes and reduce default risk for financial institutions.",
+            "tech": "Python, Decision Tree Classifier, Scikit-Learn",
+            "img": "https://images.unsplash.com/photo-1554224155-9ffd4d2fb30c?q=80&w=1000&auto=format&fit=crop",
+            "challenge": "Financial institutions need to balance loan approval speed with risk management. Manual review is slow and prone to human error.",
+            "solution": "Developed a Decision Tree model to classify applicants based on credit history, income, and loan amount. Optimized for high accuracy in identifying eligible borrowers.",
+            "result": "Achieved 93% accuracy in predicting loan eligibility, offering a blueprint for automated first-pass screening systems to speed up processing time."
         },
         {
             "id": 6,
-            "title": "KPP Mining Mascot",
-            "subtitle": "Brand Identity Design",
-            "desc": "Winner of KPP Mining Astra Mascot Design Competition. Combining art with corporate identity.",
-            "tech": "Illustrator, Branding",
+            "title": "Jakarta Real Estate Forecasting",
+            "subtitle": "Regression • Economic Trends • R² 93%",
+            "desc": "Data-driven housing price prediction for the Jakarta region 2024 to aid investors and homebuyers.",
+            "tech": "Python, Linear Regression, Statistical Analysis",
+            "img": "https://images.unsplash.com/photo-1448630360428-65456885c650?q=80&w=1000&auto=format&fit=crop",
+            "challenge": "Navigating the volatile Jakarta property market requires data-backed insights rather than speculation.",
+            "solution": "Cleaned and modeled housing data using Linear Regression, focusing on feature selection (Location, Square Footage) to explain price variance.",
+            "result": "Delivered a model with an R² score of 93%, indicating a very strong correlation between the selected features and market prices, useful for fair-value assessment."
+        },
+        {
+            "id": 7,
+            "title": "Restaurant Sales Patterns (Apriori)",
+            "subtitle": "Market Basket Analysis • 500 Transactions",
+            "desc": "Uncovering hidden product associations to drive cross-selling strategies in the food and beverage sector.",
+            "tech": "Python, Apriori Algorithm, Association Rule Mining",
+            "img": "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=80&w=1000&auto=format&fit=crop",
+            "challenge": "The restaurant wanted to increase the average order value (AOV) but didn't know which items were frequently bought together.",
+            "solution": "Applied the Apriori algorithm to 500 transaction records to discover rules like 'If buying Item A, likely to buy Item B'.",
+            "result": "Identified strong product pairings, enabling the creation of 'Combo Menu' recommendations that naturally encourage customers to order more items."
+        },
+        {
+            "id": 8,
+            "title": "Annual Consumer Behavior Dashboard",
+            "subtitle": "Excel • Strategic Analytics • 3,900 Rows",
+            "desc": "Interactive Excel dashboard analyzing purchasing patterns across 3,900 transactions to drive inventory decisions.",
+            "tech": "Excel (Pivot Tables, Slicers, Charts)",
+            "img": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1000&auto=format&fit=crop",
+            "challenge": "Client needed to optimize marketing spend but lacked visibility into which demographic segments were most profitable across different states.",
+            "solution": "Built a dynamic dashboard enabling multi-variable filtering (Age, Gender, Location). Conducted descriptive statistical analysis to find correlations.",
+            "result": "Discovered that Males aged 41-50 are the highest spending demographic. Identified 'Clothing' as a high-demand category in Montana/California."
+        },
+        {
+            "id": 9,
+            "title": "Customer Segmentation (K-Means)",
+            "subtitle": "Python • Machine Learning • Clustering",
+            "desc": "Unsupervised Learning project to segment mall customers into 5 distinct groups for hyper-personalized marketing.",
+            "tech": "Python, Scikit-Learn, K-Means, Matplotlib",
+            "img": "https://images.unsplash.com/photo-1556740758-90de374c12ad?q=80&w=1000&auto=format&fit=crop",
+            "challenge": "Generic marketing blasts were yielding low conversion rates. Needed to differentiate between 'High Spenders' and 'Budget Shoppers'.",
+            "solution": "Applied the Elbow Method to determine the optimal number of clusters (K=5) based on Annual Income vs. Spending Score. Removed outliers before training.",
+            "result": "Identified a critical 'High Income, Low Spend' segment. Recommended a 'Value-Based Campaign' for this group to increase conversion."
+        },
+        {
+            "id": 10,
+            "title": "KPP Mining Mascot Design",
+            "subtitle": "Brand Identity • Corporate Design",
+            "desc": "Winner of KPP Mining Astra Mascot Design Competition. Combining corporate values with modern art.",
+            "tech": "Adobe Illustrator, Branding Strategy",
             "img": "https://images.unsplash.com/photo-1626785774573-4b799314348d?q=80&w=1000&auto=format&fit=crop",
-            "challenge": "Create a mascot that embodies strength and technology for a mining company.",
-            "solution": "Designed a robot-themed mascot using company colors to symbolize future-ready mining operations.",
-            "result": "1st Place Winner selected from 50+ entries. Mascot used in internal communications."
+            "challenge": "Create a mascot that visually embodies 'Strength', 'Technology', and 'Future-Readiness' moving away from traditional industrial imagery.",
+            "solution": "Designed a Robot-Themed Mascot utilizing the official corporate color palette, focusing on clean lines and futuristic aesthetics.",
+            "result": "Selected as the 1st Place Winner from 50+ entries. The mascot was adopted for internal corporate communications."
         }
     ],
-    "gallery": [
+    "mlProjects": [],
+    "certificates": [
         {
-            "img": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1000&auto=format&fit=crop",
-            "title": "Dashboard Preview"
+            "title": "SQL Query Optimization",
+            "issuer": "Online Cert",
+            "img": "https://images.unsplash.com/photo-1543286386-2e659306cd6c?q=80&w=1000&auto=format&fit=crop"
+        },
+        {
+            "title": "Python Bootcamp",
+            "issuer": "PPKD JakSel",
+            "img": "https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?q=80&w=1000&auto=format&fit=crop"
+        },
+        {
+            "title": "Data Visualization",
+            "issuer": "Workshop",
+            "img": "https://images.unsplash.com/photo-1554224155-6726b3ff858f?q=80&w=1000&auto=format&fit=crop"
         }
     ],
     "footer": {
-        "copyright": "© 2024 Luqfi Anita Rahman. Built with <i data-lucide='heart' size='12' style='color: red; display: inline;'></i> & Data.",
+        "copyright": "© 2026 Luqfi Anita Rahman. All rights reserved.",
         "linkedin": "#",
         "github": "#",
         "instagram": "#"

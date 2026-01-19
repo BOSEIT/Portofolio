@@ -10,10 +10,10 @@
         /* --- PREMIUM WHITE VARIABLES --- */
         :root {
             --bg-body: #f8fafc; /* Slate-50 */
-            --bg-card: #ffffff; 
+            --bg-card: #ffffff;
             --bg-input: #f1f5f9; /* Slate-100 */
-            --border: #e2e8f0;   /* Slate-200 */
-            --primary: #0891b2;  /* Cyan-600 */
+            --border: #e2e8f0; /* Slate-200 */
+            --primary: #0891b2; /* Cyan-600 */
             --primary-hover: #0e7490;
             --text-main: #0f172a; /* Slate-900 */
             --text-muted: #64748b; /* Slate-500 */
@@ -21,128 +21,240 @@
             --success: #10b981;
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-        body { 
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; 
-            background: var(--bg-body); 
-            color: var(--text-main); 
-            padding-bottom: 120px; 
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg-body);
+            color: var(--text-main);
+            padding-bottom: 120px;
             line-height: 1.6;
         }
 
-        .container { max-width: 1000px; margin: 0 auto; padding: 2rem 1rem; }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
 
         /* HEADER STYLE */
-        header { text-align: center; margin-bottom: 3rem; padding-bottom: 2rem; border-bottom: 1px solid var(--border); }
-        h1 { font-size: 2rem; font-weight: 800; letter-spacing: -1px; margin-bottom: 0.5rem; background: linear-gradient(to right, #0f172a, #64748b); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        p.subtitle { color: var(--text-muted); font-size: 1rem; }
+        header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        h1 {
+            font-size: 2rem;
+            font-weight: 800;
+            letter-spacing: -1px;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(to right, #0f172a, #64748b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        p.subtitle {
+            color: var(--text-muted);
+            font-size: 1rem;
+        }
 
         /* CARD SECTIONS */
-        .section { 
-            background: var(--bg-card); 
-            border: 1px solid var(--border); 
-            border-radius: 16px; 
-            padding: 2rem; 
-            margin-bottom: 2rem; 
+        .section {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 2rem;
+            margin-bottom: 2rem;
             box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
             transition: transform 0.2s;
         }
-        
-        .section-header { 
-            display: flex; align-items: center; gap: 0.75rem; 
-            margin-bottom: 2rem; padding-bottom: 1rem; border-bottom: 1px solid var(--border); 
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--border);
         }
-        .section-header h2 { color: var(--primary); font-size: 1.25rem; font-weight: 700; margin: 0; }
-        .icon-box { background: #ecfeff; padding: 8px; border-radius: 8px; color: var(--primary); border: 1px solid #cffafe; }
+
+            .section-header h2 {
+                color: var(--primary);
+                font-size: 1.25rem;
+                font-weight: 700;
+                margin: 0;
+            }
+
+        .icon-box {
+            background: #ecfeff;
+            padding: 8px;
+            border-radius: 8px;
+            color: var(--primary);
+            border: 1px solid #cffafe;
+        }
 
         /* FORM ELEMENTS */
-        .grid-2 { 
-            display: grid; 
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
-            gap: 1.5rem; 
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
         }
 
-        .form-group { margin-bottom: 1.5rem; }
-        label { display: block; margin-bottom: 0.5rem; color: var(--text-muted); font-size: 0.85rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }
-        
-        input, textarea { 
-            width: 100%; 
-            padding: 0.85rem 1rem; 
-            background: var(--bg-input); 
-            border: 1px solid var(--border); 
-            color: var(--text-main); 
-            border-radius: 8px; 
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 0.85rem 1rem;
+            background: var(--bg-input);
+            border: 1px solid var(--border);
+            color: var(--text-main);
+            border-radius: 8px;
             font-size: 0.95rem;
-            font-family: inherit; 
+            font-family: inherit;
             transition: all 0.2s ease;
         }
-        
-        input:focus, textarea:focus { 
-            outline: none; 
-            border-color: var(--primary); 
-            background: #ffffff;
-            box-shadow: 0 0 0 3px rgba(8, 145, 178, 0.1); 
+
+            input:focus, textarea:focus {
+                outline: none;
+                border-color: var(--primary);
+                background: #ffffff;
+                box-shadow: 0 0 0 3px rgba(8, 145, 178, 0.1);
+            }
+
+        textarea {
+            min-height: 100px;
+            resize: vertical;
         }
-        
-        textarea { min-height: 100px; resize: vertical; }
 
         /* ARRAYS / LIST ITEMS */
-        .item-box { 
-            background: #f8fafc; 
-            border: 1px solid var(--border); 
-            padding: 1.5rem; 
-            margin-bottom: 1.5rem; 
-            position: relative; 
-            border-radius: 12px; 
+        .item-box {
+            background: #f8fafc;
+            border: 1px solid var(--border);
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            border-radius: 12px;
         }
-        
+
         .item-badge {
-            position: absolute; top: -12px; left: 15px;
-            background: var(--primary); color: white;
-            padding: 2px 10px; border-radius: 20px;
-            font-size: 0.75rem; font-weight: 700;
+            position: absolute;
+            top: -12px;
+            left: 15px;
+            background: var(--primary);
+            color: white;
+            padding: 2px 10px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 700;
             text-transform: uppercase;
             box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
         }
 
         /* BUTTONS */
-        .btn-add { 
-            background: #ffffff; border: 2px dashed var(--border); color: var(--primary);
-            width: 100%; padding: 1rem; border-radius: 12px; font-weight: 600; cursor: pointer;
-            display: flex; align-items: center; justify-content: center; gap: 0.5rem;
+        .btn-add {
+            background: #ffffff;
+            border: 2px dashed var(--border);
+            color: var(--primary);
+            width: 100%;
+            padding: 1rem;
+            border-radius: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
             transition: all 0.2s;
         }
-        .btn-add:hover { background: #f0f9ff; border-color: var(--primary); }
 
-        .btn-delete { 
-            position: absolute; top: 15px; right: 15px; 
-            background: #fef2f2; color: var(--danger); 
-            border: 1px solid #fee2e2; padding: 6px 12px; border-radius: 6px; 
-            cursor: pointer; font-size: 0.8rem; font-weight: 600;
+            .btn-add:hover {
+                background: #f0f9ff;
+                border-color: var(--primary);
+            }
+
+        .btn-delete {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: #fef2f2;
+            color: var(--danger);
+            border: 1px solid #fee2e2;
+            padding: 6px 12px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.8rem;
+            font-weight: 600;
             transition: background 0.2s;
         }
-        .btn-delete:hover { background: var(--danger); color: white; border-color: var(--danger); }
-        
+
+            .btn-delete:hover {
+                background: var(--danger);
+                color: white;
+                border-color: var(--danger);
+            }
+
         /* FLOATING SAVE BUTTON */
         .floating-bar {
-            position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%);
-            background: rgba(255, 255, 255, 0.9); backdrop-filter: blur(10px);
-            border: 1px solid var(--border); padding: 0.75rem 1.5rem; border-radius: 100px;
-            display: flex; align-items: center; gap: 1rem;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1); z-index: 100;
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--border);
+            padding: 0.75rem 1.5rem;
+            border-radius: 100px;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            z-index: 100;
         }
-        
+
         .btn-save {
-            background: var(--primary); color: white; border: none;
-            padding: 0.75rem 2rem; border-radius: 50px; font-weight: 700;
-            cursor: pointer; font-size: 1rem; display: flex; align-items: center; gap: 0.5rem;
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 0.75rem 2rem;
+            border-radius: 50px;
+            font-weight: 700;
+            cursor: pointer;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
             transition: transform 0.2s;
             box-shadow: 0 4px 12px rgba(8, 145, 178, 0.3);
         }
-        .btn-save:hover { transform: scale(1.05); background: var(--primary-hover); }
-        .status-text { font-size: 0.9rem; color: var(--text-muted); font-weight: 500; }
 
+            .btn-save:hover {
+                transform: scale(1.05);
+                background: var(--primary-hover);
+            }
+
+        .status-text {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
     </style>
 </head>
 <body>
@@ -169,393 +281,431 @@
 
     <script>
         // Init App Data from global variable in data.js
-        let appData = portfolioData;
+        // If portfolioData is undefined, initialize empty object to prevent crash
+        let appData = (typeof portfolioData !== 'undefined') ? portfolioData : {};
 
-        // Ensure new structures exist if loading old data
+        // Helper to ensure structure exists (backward compatibility)
+        function ensureStructure() {
+        if (!appData.nav) appData.nav = { logo: "Logo", accent: ".", btn: "Hire Me" };
+        if (!appData.hero) appData.hero = { badge: "", title1: "", title2: "", desc: "", btn1: "", btn2: "", repo: "" };
+        if (!appData.contact) appData.contact = { wa: "", email: "" };
+        if (!appData.stats) appData.stats = [];
         if (!appData.dashboard) appData.dashboard = [];
-        if (!appData.hero.repo) appData.hero.repo = "";
+        if (!appData.approach) appData.approach = { title: "", desc: "", cards: [] };
+        if (!appData.tools) appData.tools = [];
+        if (!appData.projects) appData.projects = [];
+        if (!appData.mlProjects) appData.mlProjects = [];
+        if (!appData.certificates) appData.certificates = [];
+        if (!appData.footer) appData.footer = { copyright: "", linkedin: "", github: "", instagram: "" };
+        }
+        ensureStructure();
 
         function renderForm() {
-            const container = document.getElementById('form-container');
-            container.innerHTML = `
-                <!-- 1. BRANDING & CONTACT -->
-                <div class="section">
-                    <div class="section-header">
-                        <div class="icon-box"><i data-lucide="globe"></i></div>
-                        <h2>Branding & Contact</h2>
-                    </div>
-                    <div class="grid-2">
-                        <div class="form-group">
-                            <label>Logo Main Text</label>
-                            <input id="nav-logo" value="${appData.nav.logo}">
-                        </div>
-                        <div class="form-group">
-                            <label>Logo Accent (.DATA)</label>
-                            <input id="nav-accent" value="${appData.nav.accent}">
-                        </div>
-                        <div class="form-group">
-                            <label>WhatsApp Link</label>
-                            <input id="contact-wa" value="${appData.contact.wa}">
-                        </div>
-                        <div class="form-group">
-                            <label>Email Address</label>
-                            <input id="contact-email" value="${appData.contact.email}">
-                        </div>
-                    </div>
-                    <div class="form-group" style="margin-top:1rem;">
-                        <label>Navbar Button CTA</label>
-                        <input id="nav-btn" value="${appData.nav.btn}">
-                    </div>
-                </div>
+        const container = document.getElementById('form-container');
+        container.innerHTML = `
+        <!-- 1. BRANDING & CONTACT -->
+        <div class="section">
+        <div class="section-header">
+        <div class="icon-box"><i data-lucide="globe"></i></div>
+        <h2>Branding & Contact</h2>
+        </div>
+        <div class="grid-2">
+        <div class="form-group">
+        <label>Logo Main Text</label>
+        <input id="nav-logo" value="${appData.nav.logo}">
+        </div>
+        <div class="form-group">
+        <label>Logo Accent (.DATA)</label>
+        <input id="nav-accent" value="${appData.nav.accent}">
+        </div>
+        <div class="form-group">
+        <label>WhatsApp Link</label>
+        <input id="contact-wa" value="${appData.contact.wa}">
+        </div>
+        <div class="form-group">
+        <label>Email Address</label>
+        <input id="contact-email" value="${appData.contact.email}">
+        </div>
+        </div>
+        <div class="form-group" style="margin-top:1rem;">
+        <label>Navbar Button CTA</label>
+        <input id="nav-btn" value="${appData.nav.btn}">
+        </div>
+        </div>
 
-                <!-- 2. HERO SECTION -->
-                <div class="section">
-                    <div class="section-header">
-                        <div class="icon-box"><i data-lucide="monitor"></i></div>
-                        <h2>Hero Section</h2>
-                    </div>
-                    <div class="form-group">
-                        <label>Top Badge Text</label>
-                        <input id="hero-badge" value="${appData.hero.badge}">
-                    </div>
-                    <div class="grid-2">
-                        <div class="form-group">
-                            <label>Headline Line 1 (Main)</label>
-                            <input id="hero-t1" value="${appData.hero.title1}">
-                        </div>
-                        <div class="form-group">
-                            <label>Headline Line 2 (Colored)</label>
-                            <input id="hero-t2" value="${appData.hero.title2}">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label>Hero Description</label>
-                        <textarea id="hero-desc">${appData.hero.desc}</textarea>
-                    </div>
-                    
-                    <div style="background:#f0f9ff; padding:1.5rem; border-radius:12px; border:1px solid #bae6fd; margin-bottom:1.5rem;">
-                         <label style="color:#0369a1; margin-bottom:10px;">Hero Buttons & Links</label>
-                         <div class="grid-2">
-                            <div class="form-group"><label>Button 1 Label (Outline)</label><input id="hero-btn1" value="${appData.hero.btn1}"></div>
-                            <div class="form-group"><label>Button 2 Label (Solid)</label><input id="hero-btn2" value="${appData.hero.btn2}"></div>
-                        </div>
-                        <div class="form-group" style="margin-bottom:0;"><label>Repository Link (GitHub)</label><input id="hero-repo" value="${appData.hero.repo || ''}" placeholder="https://github.com/..."></div>
-                    </div>
-                </div>
+        <!-- 2. HERO SECTION -->
+        <div class="section">
+        <div class="section-header">
+        <div class="icon-box"><i data-lucide="monitor"></i></div>
+        <h2>Hero Section</h2>
+        </div>
+        <div class="form-group">
+        <label>Top Badge Text</label>
+        <input id="hero-badge" value="${appData.hero.badge}">
+        </div>
+        <div class="grid-2">
+        <div class="form-group">
+        <label>Headline Line 1 (Main)</label>
+        <input id="hero-t1" value="${appData.hero.title1}">
+        </div>
+        <div class="form-group">
+        <label>Headline Line 2 (Colored)</label>
+        <input id="hero-t2" value="${appData.hero.title2}">
+        </div>
+        </div>
+        <div class="form-group">
+        <label>Hero Description</label>
+        <textarea id="hero-desc">${appData.hero.desc}</textarea>
+        </div>
 
-                <!-- 3. STATS -->
-                <div class="section">
-                    <div class="section-header">
-                        <div class="icon-box"><i data-lucide="bar-chart-2"></i></div>
-                        <h2>Quick Stats</h2>
-                    </div>
-                    <div class="grid-2">
-                        ${appData.stats.map((s, i) => `
-                            <div style="background:#f1f5f9; padding:1rem; border-radius:8px; border:1px solid #e2e8f0;">
-                                <label style="margin-bottom:5px;">Stat ${i+1}</label>
-                                <div style="display:flex; gap:10px;">
-                                    <input id="stat-val-${i}" value="${s.val}" placeholder="Value" style="width:40%;">
-                                    <input id="stat-lbl-${i}" value="${s.label}" placeholder="Label" style="width:60%;">
-                                </div>
-                            </div>
-                        `).join('')}
-                    </div>
-                </div>
-                
-                <!-- 4. DASHBOARD (NEW SECTION) -->
-                <div class="section">
-                    <div class="section-header">
-                        <div class="icon-box"><i data-lucide="layout-dashboard"></i></div>
-                        <h2>Dashboard Gallery (Modal)</h2>
-                    </div>
-                    <p style="color:#64748b; font-size:0.9rem; margin-bottom:1.5rem;">
-                        Images shown in the "My Dashboard" popup. Ideal for screenshots of tools, activities, or team photos.
-                    </p>
-                    <div id="dashboard-list"></div>
-                    <button class="btn-add" onclick="addItem('dashboard')">
-                        <i data-lucide="plus"></i> Add Dashboard Image
-                    </button>
-                </div>
+        <div style="background:#f0f9ff; padding:1.5rem; border-radius:12px; border:1px solid #bae6fd; margin-bottom:1.5rem;">
+        <label style="color:#0369a1; margin-bottom:10px;">Hero Buttons & Links</label>
+        <div class="grid-2">
+        <div class="form-group"><label>Button 1 Label (Outline)</label><input id="hero-btn1" value="${appData.hero.btn1}"></div>
+        <div class="form-group"><label>Button 2 Label (Solid)</label><input id="hero-btn2" value="${appData.hero.btn2}"></div>
+        </div>
+        <div class="form-group" style="margin-bottom:0;"><label>Repository Link (GitHub)</label><input id="hero-repo" value="${appData.hero.repo || ''}" placeholder="https://github.com/..."></div>
+        </div>
+        </div>
 
-                <!-- 5. MY APPROACH -->
-                <div class="section">
-                    <div class="section-header">
-                        <div class="icon-box"><i data-lucide="lightbulb"></i></div>
-                        <h2>My Approach</h2>
-                    </div>
-                    <div class="form-group"><label>Section Title</label><input id="appr-title" value="${appData.approach.title}"></div>
-                    <div class="form-group"><label>Section Description</label><textarea id="appr-desc">${appData.approach.desc}</textarea></div>
-                    
-                    <h3 style="color:var(--primary); margin: 2rem 0 1rem 0; font-size:1rem; text-transform:uppercase; letter-spacing:1px; font-weight:700;">Approach Cards</h3>
-                    <div id="approach-list"></div>
-                </div>
+        <!-- 3. STATS -->
+        <div class="section">
+        <div class="section-header">
+        <div class="icon-box"><i data-lucide="bar-chart-2"></i></div>
+        <h2>Quick Stats</h2>
+        </div>
+        <div class="grid-2">
+        ${appData.stats.map((s, i) => `
+        <div style="background:#f1f5f9; padding:1rem; border-radius:8px; border:1px solid #e2e8f0;">
+        <label style="margin-bottom:5px;">Stat ${i+1}</label>
+        <div style="display:flex; gap:10px;">
+        <input id="stat-val-${i}" value="${s.val}" placeholder="Value" style="width:40%;">
+        <input id="stat-lbl-${i}" value="${s.label}" placeholder="Label" style="width:60%;">
+        </div>
+        </div>
+        `).join('')}
+        </div>
+        </div>
 
-                <!-- 6. EXPERIENCE -->
-                <div class="section">
-                    <div class="section-header">
-                        <div class="icon-box"><i data-lucide="briefcase"></i></div>
-                        <h2>Experience</h2>
-                    </div>
-                    <div id="exp-list"></div>
-                    <button class="btn-add" onclick="addItem('experience')">
-                        <i data-lucide="plus"></i> Add New Experience
-                    </button>
-                </div>
+        <!-- 4. DASHBOARD (NEW SECTION) -->
+        <div class="section">
+        <div class="section-header">
+        <div class="icon-box"><i data-lucide="layout-dashboard"></i></div>
+        <h2>Dashboard Gallery (Modal)</h2>
+        </div>
+        <p style="color:#64748b; font-size:0.9rem; margin-bottom:1.5rem;">
+        Images shown in the "My Dashboard" popup. Ideal for screenshots of tools, activities, or team photos.
+        </p>
+        <div id="dashboard-list"></div>
+        <button class="btn-add" onclick="addItem('dashboard')">
+        <i data-lucide="plus"></i> Add Dashboard Image
+        </button>
+        </div>
 
-                <!-- 7. PROJECTS -->
-                <div class="section">
-                    <div class="section-header">
-                        <div class="icon-box"><i data-lucide="layers"></i></div>
-                        <h2>Projects (Case Studies)</h2>
-                    </div>
-                    <div id="proj-list"></div>
-                    <button class="btn-add" onclick="addItem('projects')">
-                        <i data-lucide="plus"></i> Add New Project
-                    </button>
-                </div>
+        <!-- 5. TOOLS I USE (UPDATED) -->
+        <div class="section">
+        <div class="section-header">
+        <div class="icon-box"><i data-lucide="wrench"></i></div>
+        <h2>Tools & Tech Stack</h2>
+        </div>
+        <div id="tools-list"></div>
+        <button class="btn-add" onclick="addItem('tools')">
+        <i data-lucide="plus"></i> Add Tool
+        </button>
+        </div>
 
-                <!-- 8. VISUAL GALLERY -->
-                <div class="section">
-                    <div class="section-header">
-                        <div class="icon-box"><i data-lucide="image"></i></div>
-                        <h2>Visual Gallery (Footer Grid)</h2>
-                    </div>
-                    <p style="color:#64748b; font-size:0.9rem; margin-bottom:1.5rem;">
-                        Note: Images from "Projects" above are automatically included. Add extra images here (e.g. certificates, activities).
-                    </p>
-                    <div id="gallery-list"></div>
-                    <button class="btn-add" onclick="addItem('gallery')">
-                        <i data-lucide="plus"></i> Add Extra Image
-                    </button>
-                </div>
+        <!-- 6. MY APPROACH -->
+        <div class="section">
+        <div class="section-header">
+        <div class="icon-box"><i data-lucide="lightbulb"></i></div>
+        <h2>My Approach</h2>
+        </div>
+        <div class="form-group"><label>Section Title</label><input id="appr-title" value="${appData.approach.title}"></div>
+        <div class="form-group"><label>Section Description</label><textarea id="appr-desc">${appData.approach.desc}</textarea></div>
 
-                <!-- 9. FOOTER LINKS -->
-                <div class="section">
-                    <div class="section-header">
-                        <div class="icon-box"><i data-lucide="share-2"></i></div>
-                        <h2>Footer Links</h2>
-                    </div>
-                    <div class="form-group"><label>Copyright Text</label><input id="foot-copy" value="${appData.footer.copyright.replace(/"/g, '&quot;')}"></div>
-                    <div class="grid-2">
-                        <div class="form-group"><label>LinkedIn</label><input id="foot-link" value="${appData.footer.linkedin}"></div>
-                        <div class="form-group"><label>GitHub</label><input id="foot-git" value="${appData.footer.github}"></div>
-                        <div class="form-group"><label>Instagram</label><input id="foot-ig" value="${appData.footer.instagram}"></div>
-                    </div>
-                </div>
-            `;
-            
-            renderArrays();
-            lucide.createIcons();
+        <h3 style="color:var(--primary); margin: 2rem 0 1rem 0; font-size:1rem; text-transform:uppercase; letter-spacing:1px; font-weight:700;">Approach Cards</h3>
+        <div id="approach-list"></div>
+        </div>
+
+        <!-- 7. PROJECTS (FEATURED CASE STUDIES) -->
+        <div class="section">
+        <div class="section-header">
+        <div class="icon-box"><i data-lucide="layers"></i></div>
+        <h2>Featured Case Studies</h2>
+        </div>
+        <div id="proj-list"></div>
+        <button class="btn-add" onclick="addItem('projects')">
+        <i data-lucide="plus"></i> Add New Case Study
+        </button>
+        </div>
+
+        <!-- 8. MACHINE LEARNING PROJECTS (UPDATED) -->
+        <div class="section">
+        <div class="section-header">
+        <div class="icon-box"><i data-lucide="cpu"></i></div>
+        <h2>Machine Learning & Analytics</h2>
+        </div>
+        <div id="ml-list"></div>
+        <button class="btn-add" onclick="addItem('mlProjects')">
+        <i data-lucide="plus"></i> Add ML Project
+        </button>
+        </div>
+
+        <!-- 9. CERTIFICATIONS (UPDATED) -->
+        <div class="section">
+        <div class="section-header">
+        <div class="icon-box"><i data-lucide="award"></i></div>
+        <h2>Certifications</h2>
+        </div>
+        <div id="cert-list"></div>
+        <button class="btn-add" onclick="addItem('certificates')">
+        <i data-lucide="plus"></i> Add Certificate
+        </button>
+        </div>
+
+        <!-- 10. FOOTER LINKS -->
+        <div class="section">
+        <div class="section-header">
+        <div class="icon-box"><i data-lucide="share-2"></i></div>
+        <h2>Footer Links</h2>
+        </div>
+        <div class="form-group"><label>Copyright Text</label><input id="foot-copy" value="${appData.footer.copyright.replace(/"/g, '&quot;')}"></div>
+        <div class="grid-2">
+        <div class="form-group"><label>LinkedIn</label><input id="foot-link" value="${appData.footer.linkedin}"></div>
+        <div class="form-group"><label>GitHub</label><input id="foot-git" value="${appData.footer.github}"></div>
+        <div class="form-group"><label>Instagram</label><input id="foot-ig" value="${appData.footer.instagram}"></div>
+        </div>
+        </div>
+        `;
+
+        renderArrays();
+        lucide.createIcons();
         }
 
         function renderArrays() {
-            // DASHBOARD ITEMS (NEW)
-            const dashboardData = appData.dashboard || [];
-            document.getElementById('dashboard-list').innerHTML = dashboardData.map((d, i) => `
-                <div class="item-box">
-                    <button class="btn-delete" onclick="deleteItem('dashboard', ${i})">Delete</button>
-                    <div class="grid-2">
-                        <div class="form-group">
-                            <label>Image URL</label>
-                            <input id="dash-url-${i}" value="${d.url}" placeholder="https://...">
-                        </div>
-                        <div class="form-group">
-                            <label>Caption</label>
-                            <input id="dash-cap-${i}" value="${d.caption}" placeholder="Activity description">
-                        </div>
-                    </div>
-                    ${d.url ? `<img src="${d.url}" style="height:60px; border-radius:4px; object-fit:cover; margin-top:5px; border:1px solid #ddd;">` : ''}
-                </div>
-            `).join('');
+        // DASHBOARD ITEMS
+        const dashboardData = appData.dashboard || [];
+        document.getElementById('dashboard-list').innerHTML = dashboardData.map((d, i) => `
+        <div class="item-box">
+        <button class="btn-delete" onclick="deleteItem('dashboard', ${i})">Delete</button>
+        <div class="grid-2">
+        <div class="form-group">
+        <label>Image URL</label>
+        <input id="dash-url-${i}" value="${d.url}" placeholder="https://...">
+        </div>
+        <div class="form-group">
+        <label>Caption</label>
+        <input id="dash-cap-${i}" value="${d.caption}" placeholder="Activity description">
+        </div>
+        </div>
+        ${d.url ? `<img src="${d.url}" style="height:60px; border-radius:4px; object-fit:cover; margin-top:5px; border:1px solid #ddd;">` : ''}
+        </div>
+        `).join('');
 
-            // APPROACH CARDS
-            document.getElementById('approach-list').innerHTML = appData.approach.cards.map((c, i) => `
-                <div class="item-box">
-                    <span class="item-badge">Card ${i+1}</span>
-                    <div class="grid-2">
-                        <div class="form-group"><label>Icon (Lucide Name)</label><input id="appr-icon-${i}" value="${c.icon}"></div>
-                        <div class="form-group"><label>Card Title</label><input id="appr-title-${i}" value="${c.title}"></div>
-                    </div>
-                    <div class="form-group"><label>Description</label><textarea id="appr-desc-${i}" style="height:70px;">${c.desc}</textarea></div>
-                </div>
-            `).join('');
+        // TOOLS ITEMS
+        const toolsData = appData.tools || [];
+        document.getElementById('tools-list').innerHTML = toolsData.map((t, i) => `
+        <div class="item-box" style="padding:1rem;">
+        <button class="btn-delete" onclick="deleteItem('tools', ${i})" style="top:10px; right:10px;">Delete</button>
+        <div style="display:flex; gap:10px; align-items:center;">
+        <div style="flex-grow:1;"><label>Tool Name</label><input id="tool-name-${i}" value="${t.name}"></div>
+        <div style="width:150px;"><label>Icon Name</label><input id="tool-icon-${i}" value="${t.icon}"></div>
+        </div>
+        </div>
+        `).join('');
 
-            // EXPERIENCE
-            document.getElementById('exp-list').innerHTML = appData.experience.map((e, i) => `
-                <div class="item-box">
-                    <button class="btn-delete" onclick="deleteItem('experience', ${i})">Delete</button>
-                    <div class="grid-2">
-                        <div class="form-group"><label>Period</label><input id="exp-year-${i}" value="${e.year}"></div>
-                        <div class="form-group"><label>Job Title</label><input id="exp-title-${i}" value="${e.title}"></div>
-                    </div>
-                    <div class="form-group"><label>Company</label><input id="exp-comp-${i}" value="${e.company}"></div>
-                    <div class="form-group"><label>Description</label><textarea id="exp-desc-${i}">${e.desc}</textarea></div>
-                </div>
-            `).join('');
+        // APPROACH CARDS
+        document.getElementById('approach-list').innerHTML = appData.approach.cards.map((c, i) => `
+        <div class="item-box">
+        <span class="item-badge">Card ${i+1}</span>
+        <div class="grid-2">
+        <div class="form-group"><label>Icon (Lucide Name)</label><input id="appr-icon-${i}" value="${c.icon}"></div>
+        <div class="form-group"><label>Card Title</label><input id="appr-title-${i}" value="${c.title}"></div>
+        </div>
+        <div class="form-group"><label>Description</label><textarea id="appr-desc-${i}" style="height:70px;">${c.desc}</textarea></div>
+        </div>
+        `).join('');
 
-            // PROJECTS
-            document.getElementById('proj-list').innerHTML = appData.projects.map((p, i) => `
-                <div class="item-box">
-                    <button class="btn-delete" onclick="deleteItem('projects', ${i})">Delete</button>
-                    <div class="grid-2">
-                        <div class="form-group"><label>Project Title</label><input id="proj-title-${i}" value="${p.title}"></div>
-                        <div class="form-group"><label>Subtitle</label><input id="proj-sub-${i}" value="${p.subtitle}"></div>
-                    </div>
-                    <div class="form-group"><label>Image URL</label><input id="proj-img-${i}" value="${p.img}"></div>
-                    <div class="form-group"><label>Tech Stack</label><input id="proj-tech-${i}" value="${p.tech}"></div>
-                    <div class="form-group"><label>Short Description (Card)</label><textarea id="proj-desc-${i}" style="height:60px;">${p.desc}</textarea></div>
-                    
-                    <div style="background:#f1f5f9; padding:1.5rem; border-radius:8px; border:1px solid #e2e8f0; margin-top:1rem;">
-                        <label style="color:var(--primary); margin-bottom:1rem; border-bottom:1px solid #e2e8f0; padding-bottom:0.5rem;">--- Modal Details (Popup Content) ---</label>
-                        <div class="form-group"><label>The Challenge</label><textarea id="proj-chal-${i}">${p.challenge}</textarea></div>
-                        <div class="form-group"><label>The Solution</label><textarea id="proj-sol-${i}">${p.solution}</textarea></div>
-                        <div class="form-group"><label>Key Result</label><input id="proj-res-${i}" value="${p.result}"></div>
-                    </div>
-                </div>
-            `).join('');
+        // PROJECTS
+        document.getElementById('proj-list').innerHTML = appData.projects.map((p, i) => `
+        <div class="item-box">
+        <button class="btn-delete" onclick="deleteItem('projects', ${i})">Delete</button>
+        <div class="grid-2">
+        <div class="form-group"><label>Project Title</label><input id="proj-title-${i}" value="${p.title}"></div>
+        <div class="form-group"><label>Subtitle</label><input id="proj-sub-${i}" value="${p.subtitle}"></div>
+        </div>
+        <div class="form-group"><label>Image URL</label><input id="proj-img-${i}" value="${p.img}"></div>
+        <div class="form-group"><label>Tech Stack</label><input id="proj-tech-${i}" value="${Array.isArray(p.tech) ? p.tech.join(', ') : p.tech}"></div>
+        <div class="form-group"><label>Short Description (Card)</label><textarea id="proj-desc-${i}" style="height:60px;">${p.desc}</textarea></div>
 
-            // GALLERY
-            const galleryData = appData.gallery || [];
-            document.getElementById('gallery-list').innerHTML = galleryData.map((g, i) => `
-                <div class="item-box">
-                    <button class="btn-delete" onclick="deleteItem('gallery', ${i})">Delete</button>
-                    <div class="grid-2">
-                        <div class="form-group"><label>Image URL</label><input id="gal-img-${i}" value="${g.img}"></div>
-                        <div class="form-group"><label>Caption / Title</label><input id="gal-title-${i}" value="${g.title}"></div>
-                    </div>
-                    ${g.img ? `<img src="${g.img}" style="height:60px; border-radius:4px; object-fit:cover; margin-top:5px; border:1px solid #ddd;">` : ''}
-                </div>
-            `).join('');
-            
-            lucide.createIcons();
+        <div style="background:#f1f5f9; padding:1.5rem; border-radius:8px; border:1px solid #e2e8f0; margin-top:1rem;">
+        <label style="color:var(--primary); margin-bottom:1rem; border-bottom:1px solid #e2e8f0; padding-bottom:0.5rem;">--- Modal Details (Popup Content) ---</label>
+        <div class="form-group"><label>The Challenge</label><textarea id="proj-chal-${i}">${p.challenge}</textarea></div>
+        <div class="form-group"><label>The Solution</label><textarea id="proj-sol-${i}">${p.solution}</textarea></div>
+        <div class="form-group"><label>Key Result</label><input id="proj-res-${i}" value="${p.result}"></div>
+        </div>
+        </div>
+        `).join('');
+
+        // ML PROJECTS
+        const mlData = appData.mlProjects || [];
+        document.getElementById('ml-list').innerHTML = mlData.map((m, i) => `
+        <div class="item-box">
+        <button class="btn-delete" onclick="deleteItem('mlProjects', ${i})">Delete</button>
+        <div class="grid-2">
+        <div class="form-group"><label>Title</label><input id="ml-title-${i}" value="${m.title}"></div>
+        <div class="form-group"><label>Algorithm Used</label><input id="ml-algo-${i}" value="${m.algo}"></div>
+        </div>
+        <div class="form-group"><label>Description</label><input id="ml-desc-${i}" value="${m.desc}"></div>
+        </div>
+        `).join('');
+
+        // CERTIFICATES
+        const certData = appData.certificates || [];
+        document.getElementById('cert-list').innerHTML = certData.map((c, i) => `
+        <div class="item-box">
+        <button class="btn-delete" onclick="deleteItem('certificates', ${i})">Delete</button>
+        <div class="grid-2">
+        <div class="form-group"><label>Certificate Title</label><input id="cert-title-${i}" value="${c.title}"></div>
+        <div class="form-group"><label>Issuer</label><input id="cert-iss-${i}" value="${c.issuer}"></div>
+        </div>
+        <div class="form-group"><label>Image URL</label><input id="cert-img-${i}" value="${c.img}"></div>
+        </div>
+        `).join('');
+
+        lucide.createIcons();
         }
 
         // --- DATA SYNC & LOGIC ---
         function syncData() {
-            // General
-            appData.nav.logo = document.getElementById('nav-logo').value;
-            appData.nav.accent = document.getElementById('nav-accent').value;
-            appData.nav.btn = document.getElementById('nav-btn').value;
-            appData.contact.wa = document.getElementById('contact-wa').value;
-            appData.contact.email = document.getElementById('contact-email').value;
-            
-            // Hero
-            appData.hero.badge = document.getElementById('hero-badge').value;
-            appData.hero.title1 = document.getElementById('hero-t1').value;
-            appData.hero.title2 = document.getElementById('hero-t2').value;
-            appData.hero.desc = document.getElementById('hero-desc').value;
-            appData.hero.btn1 = document.getElementById('hero-btn1').value;
-            appData.hero.btn2 = document.getElementById('hero-btn2').value;
-            // NEW: Repo Link
-            appData.hero.repo = document.getElementById('hero-repo').value;
+        // General
+        appData.nav.logo = document.getElementById('nav-logo').value;
+        appData.nav.accent = document.getElementById('nav-accent').value;
+        appData.nav.btn = document.getElementById('nav-btn').value;
+        appData.contact.wa = document.getElementById('contact-wa').value;
+        appData.contact.email = document.getElementById('contact-email').value;
 
-            // Stats
-            appData.stats.forEach((_, i) => {
-                appData.stats[i].val = document.getElementById(`stat-val-${i}`).value;
-                appData.stats[i].label = document.getElementById(`stat-lbl-${i}`).value;
-            });
+        // Hero
+        appData.hero.badge = document.getElementById('hero-badge').value;
+        appData.hero.title1 = document.getElementById('hero-t1').value;
+        appData.hero.title2 = document.getElementById('hero-t2').value;
+        appData.hero.desc = document.getElementById('hero-desc').value;
+        appData.hero.btn1 = document.getElementById('hero-btn1').value;
+        appData.hero.btn2 = document.getElementById('hero-btn2').value;
+        appData.hero.repo = document.getElementById('hero-repo').value;
 
-            // NEW: Dashboard
-            if (!appData.dashboard) appData.dashboard = [];
-            appData.dashboard.forEach((_, i) => {
-                if(document.getElementById(`dash-url-${i}`)) {
-                    appData.dashboard[i].url = document.getElementById(`dash-url-${i}`).value;
-                    appData.dashboard[i].caption = document.getElementById(`dash-cap-${i}`).value;
-                }
-            });
+        // Stats
+        appData.stats.forEach((_, i) => {
+        appData.stats[i].val = document.getElementById(`stat-val-${i}`).value;
+        appData.stats[i].label = document.getElementById(`stat-lbl-${i}`).value;
+        });
 
-            // Approach
-            appData.approach.title = document.getElementById('appr-title').value;
-            appData.approach.desc = document.getElementById('appr-desc').value;
-            appData.approach.cards.forEach((_, i) => {
-                appData.approach.cards[i].icon = document.getElementById(`appr-icon-${i}`).value;
-                appData.approach.cards[i].title = document.getElementById(`appr-title-${i}`).value;
-                appData.approach.cards[i].desc = document.getElementById(`appr-desc-${i}`).value;
-            });
+        // Dashboard
+        if (!appData.dashboard) appData.dashboard = [];
+        appData.dashboard.forEach((_, i) => {
+        if(document.getElementById(`dash-url-${i}`)) {
+        appData.dashboard[i].url = document.getElementById(`dash-url-${i}`).value;
+        appData.dashboard[i].caption = document.getElementById(`dash-cap-${i}`).value;
+        }
+        });
 
-            // Experience
-            appData.experience.forEach((_, i) => {
-                if(document.getElementById(`exp-year-${i}`)) {
-                    appData.experience[i].year = document.getElementById(`exp-year-${i}`).value;
-                    appData.experience[i].title = document.getElementById(`exp-title-${i}`).value;
-                    appData.experience[i].company = document.getElementById(`exp-comp-${i}`).value;
-                    appData.experience[i].desc = document.getElementById(`exp-desc-${i}`).value;
-                }
-            });
+        // Tools
+        if (!appData.tools) appData.tools = [];
+        appData.tools.forEach((_, i) => {
+        if(document.getElementById(`tool-name-${i}`)) {
+        appData.tools[i].name = document.getElementById(`tool-name-${i}`).value;
+        appData.tools[i].icon = document.getElementById(`tool-icon-${i}`).value;
+        }
+        });
 
-            // Projects
-            appData.projects.forEach((_, i) => {
-                if(document.getElementById(`proj-title-${i}`)) {
-                    appData.projects[i].title = document.getElementById(`proj-title-${i}`).value;
-                    appData.projects[i].subtitle = document.getElementById(`proj-sub-${i}`).value;
-                    appData.projects[i].img = document.getElementById(`proj-img-${i}`).value;
-                    appData.projects[i].tech = document.getElementById(`proj-tech-${i}`).value;
-                    appData.projects[i].desc = document.getElementById(`proj-desc-${i}`).value;
-                    appData.projects[i].challenge = document.getElementById(`proj-chal-${i}`).value;
-                    appData.projects[i].solution = document.getElementById(`proj-sol-${i}`).value;
-                    appData.projects[i].result = document.getElementById(`proj-res-${i}`).value;
-                }
-            });
+        // Approach
+        appData.approach.title = document.getElementById('appr-title').value;
+        appData.approach.desc = document.getElementById('appr-desc').value;
+        appData.approach.cards.forEach((_, i) => {
+        appData.approach.cards[i].icon = document.getElementById(`appr-icon-${i}`).value;
+        appData.approach.cards[i].title = document.getElementById(`appr-title-${i}`).value;
+        appData.approach.cards[i].desc = document.getElementById(`appr-desc-${i}`).value;
+        });
 
-            // Gallery
-            if (!appData.gallery) appData.gallery = [];
-            appData.gallery.forEach((_, i) => {
-                if(document.getElementById(`gal-img-${i}`)) {
-                    appData.gallery[i].img = document.getElementById(`gal-img-${i}`).value;
-                    appData.gallery[i].title = document.getElementById(`gal-title-${i}`).value;
-                }
-            });
+        // Projects
+        appData.projects.forEach((_, i) => {
+        if(document.getElementById(`proj-title-${i}`)) {
+        appData.projects[i].title = document.getElementById(`proj-title-${i}`).value;
+        appData.projects[i].subtitle = document.getElementById(`proj-sub-${i}`).value;
+        appData.projects[i].img = document.getElementById(`proj-img-${i}`).value;
+        appData.projects[i].tech = document.getElementById(`proj-tech-${i}`).value;
+        appData.projects[i].desc = document.getElementById(`proj-desc-${i}`).value;
+        appData.projects[i].challenge = document.getElementById(`proj-chal-${i}`).value;
+        appData.projects[i].solution = document.getElementById(`proj-sol-${i}`).value;
+        appData.projects[i].result = document.getElementById(`proj-res-${i}`).value;
+        }
+        });
 
-            // Footer
-            appData.footer.copyright = document.getElementById('foot-copy').value;
-            appData.footer.linkedin = document.getElementById('foot-link').value;
-            appData.footer.github = document.getElementById('foot-git').value;
-            appData.footer.instagram = document.getElementById('foot-ig').value;
+        // ML Projects
+        if (!appData.mlProjects) appData.mlProjects = [];
+        appData.mlProjects.forEach((_, i) => {
+        if(document.getElementById(`ml-title-${i}`)) {
+        appData.mlProjects[i].title = document.getElementById(`ml-title-${i}`).value;
+        appData.mlProjects[i].algo = document.getElementById(`ml-algo-${i}`).value;
+        appData.mlProjects[i].desc = document.getElementById(`ml-desc-${i}`).value;
+        }
+        });
+
+        // Certificates
+        if (!appData.certificates) appData.certificates = [];
+        appData.certificates.forEach((_, i) => {
+        if(document.getElementById(`cert-title-${i}`)) {
+        appData.certificates[i].title = document.getElementById(`cert-title-${i}`).value;
+        appData.certificates[i].issuer = document.getElementById(`cert-iss-${i}`).value;
+        appData.certificates[i].img = document.getElementById(`cert-img-${i}`).value;
+        }
+        });
+
+        // Footer
+        appData.footer.copyright = document.getElementById('foot-copy').value;
+        appData.footer.linkedin = document.getElementById('foot-link').value;
+        appData.footer.github = document.getElementById('foot-git').value;
+        appData.footer.instagram = document.getElementById('foot-ig').value;
         }
 
         function addItem(type) {
-            syncData();
-            if(type === 'experience') appData.experience.push({year:'2024', title:'New Role', company:'Company', desc:'Details...'});
-            if(type === 'projects') appData.projects.push({id: Date.now(), title:'New Project', subtitle:'Category', img:'', tech:'Python, SQL', desc:'Short desc...', challenge:'Challenge...', solution:'Solution...', result:'Result...'});
-            // NEW: Add Dashboard Item
-            if(type === 'dashboard') {
-                if(!appData.dashboard) appData.dashboard = [];
-                appData.dashboard.push({url:'', caption:'New Activity'});
-            }
-            if(type === 'gallery') {
-                if(!appData.gallery) appData.gallery = [];
-                appData.gallery.push({img:'', title:'New Image'});
-            }
-            renderForm();
+        syncData();
+        if(type === 'projects') appData.projects.push({id: Date.now(), title:'New Project', subtitle:'Category', img:'', tech:'Python, SQL', desc:'Short desc...', challenge:'Challenge...', solution:'Solution...', result:'Result...'});
+        if(type === 'dashboard') { if(!appData.dashboard) appData.dashboard = []; appData.dashboard.push({url:'', caption:'New Activity'}); }
+        if(type === 'tools') { if(!appData.tools) appData.tools = []; appData.tools.push({name:'New Tool', icon:'box'}); }
+        if(type === 'mlProjects') { if(!appData.mlProjects) appData.mlProjects = []; appData.mlProjects.push({title:'New ML', algo:'Algorithm', desc:'Desc...'}); }
+        if(type === 'certificates') { if(!appData.certificates) appData.certificates = []; appData.certificates.push({title:'Certificate', issuer:'Issuer', img:''}); }
+
+        renderForm();
         }
 
         function deleteItem(type, index) {
-            syncData();
-            if(confirm('Delete this item?')) {
-                appData[type].splice(index, 1);
-                renderForm();
-            }
+        syncData();
+        if(confirm('Delete this item?')) {
+        appData[type].splice(index, 1);
+        renderForm();
+        }
         }
 
         function downloadData() {
-            syncData();
-            const dataStr = "const portfolioData = " + JSON.stringify(appData, null, 4) + ";";
-            const blob = new Blob([dataStr], {type: "text/javascript"});
-            const url = URL.createObjectURL(blob);
-            const a = document.createElement('a');
-            a.href = url;
-            a.download = "data.js";
-            a.click();
-            
-            const btn = document.querySelector('.btn-save');
-            const originalHTML = btn.innerHTML;
-            btn.innerHTML = `<i data-lucide="check"></i> Downloaded!`;
-            btn.style.background = "#10b981";
-            setTimeout(() => {
-                btn.innerHTML = originalHTML;
-                btn.style.background = "var(--primary)";
-                lucide.createIcons();
-            }, 3000);
+        syncData();
+        const dataStr = "const portfolioData = " + JSON.stringify(appData, null, 4) + ";";
+        const blob = new Blob([dataStr], {type: "text/javascript"});
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = "data.js";
+        a.click();
+
+        const btn = document.querySelector('.btn-save');
+        const originalHTML = btn.innerHTML;
+        btn.innerHTML = `<i data-lucide="check"></i> Downloaded!`;
+        btn.style.background = "#10b981";
+        setTimeout(() => {
+        btn.innerHTML = originalHTML;
+        btn.style.background = "var(--primary)";
+        lucide.createIcons();
+        }, 3000);
         }
 
         renderForm();
