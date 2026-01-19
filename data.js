@@ -8,10 +8,10 @@ const portfolioData = {
         "badge": "Data Analytics & Machine Learning",
         "title1": "Transforming Data into",
         "title2": "Strategic Business Growth",
-        "desc": "Hi, I’m <strong>Luqfi Anita Rahman</strong>, a Data Analyst driven by a curiosity to uncover the 'why' behind the numbers.<br><br>My journey into the world of data began with an intensive 45-day program at PPKD South Jakarta, where I honed my technical skills and developed a business-first mindset. I focus on bridging the gap between complex analytics and strategic growth.",
+        "desc": "Hi, I’m <strong>Luqfi Anita Rahman</strong>, I can help companies reduce costs and increase revenue through advanced. predictive modeling and interactive dashboards.<br><br>My journey into the world of data began with an intensive 45-day program at PPKD South Jakarta, where I honed my technical skills and developed a business-first mindset. I focus on bridging the gap between complex analytics and strategic growth.",
         "btn1": "Explore Case Studies",
         "btn2": "My Tech Stack",
-        "repo": "https://github.com/BOSEIT/Portofolio.git"
+        "repo": "https://github.com/luqfianita8317?tab=repositories"
     },
     "contact": {
         "wa": "https://wa.me/6285183092062",
@@ -60,7 +60,7 @@ const portfolioData = {
             {
                 "icon": "brain-circuit",
                 "title": "Machine Learning & Advanced Analytics",
-                "desc": "Hands-on experience implementing diverse algorithms, including Random Forest (98% acc), Classification for risk modeling, and Regression for price forecasting."
+                "desc": "Hands-on experience implementing diverse algorithms, including Random Forest (98% acc), Classification for risk modeling, Regression for price forecasting, Clustering for Algorithm, dan Association Rule for Learning."
             },
             {
                 "icon": "message-square-text",
@@ -253,7 +253,7 @@ const portfolioData = {
     "footer": {
         "copyright": "© 2026 Luqfi Anita Rahman. All rights reserved.",
         "linkedin": "#",
-        "github": "#",
+        "github": "https://github.com/luqfianita8317?tab=repositories",
         "instagram": "#"
     }
 };
