@@ -257,13 +257,33 @@ const portfolioData = {
         },
         {
             "title": "Award Certificate The Transformers",
-            "issuer": "Issuer",
+            "issuer": "PPKD JakSel",
             "img": "https://github.com/BOSEIT/Portofolio/blob/main/assets/Certificate%20Data%20Analyst/Sertifikat%20Penghargaan%20PPKD.png?raw=true"
         },
         {
-            "title": "Certificate of Recognition",
+            "title": "eCertificate Data Science",
             "issuer": "Oracle",
             "img": "https://github.com/BOSEIT/Portofolio/blob/main/assets/Certificate%20Data%20Analyst/eCertificate%20Data%20Science%20Luqfi%20Anita-1.png?raw=true"
+        },
+        {
+            "title": "Score Report Data Science",
+            "issuer": "Oracle",
+            "img": "https://github.com/BOSEIT/Portofolio/blob/main/assets/Certificate%20Data%20Analyst/ScoreReport%20Data%20Science-1.png?raw=true"
+        },
+        {
+            "title": "Score Report AI Found",
+            "issuer": "Oracle",
+            "img": "https://github.com/BOSEIT/Portofolio/blob/main/assets/Certificate%20Data%20Analyst/ScoreReport%20AI%20Found-1.png?raw=true"
+        },
+        {
+            "title": "Job Training Timeline",
+            "issuer": "PPKD JakSel",
+            "img": "https://github.com/BOSEIT/Portofolio/blob/main/assets/Certificate%20Data%20Analyst/PPKD%20Data%20Analyst.jpg?raw=true"
+        },
+        {
+            "title": "List of Competency Units",
+            "issuer": "BNSP",
+            "img": "https://github.com/BOSEIT/Portofolio/blob/main/assets/Certificate%20Data%20Analyst/Luqfi%20Anita%20Rahman_BNSP%20Certified-images-1.jpg?raw=true"
         }
     ],
     "footer": {
