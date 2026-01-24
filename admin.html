@@ -611,6 +611,11 @@
                     <div class="form-group"><label>Tech Stack</label><input id="proj-tech-${i}" value="${Array.isArray(p.tech) ? p.tech.join(', ') : p.tech}"></div>
                     <div class="form-group"><label>Short Description (Card)</label><textarea id="proj-desc-${i}" style="height:60px;">${p.desc}</textarea></div>
                     
+                    <div class="form-group">
+                        <label>Gallery URLs (One per line) <span style="font-size:0.7em; color:var(--primary); background:#e0f2fe; padding:2px 5px; border-radius:4px;">New Feature</span></label>
+                        <textarea id="proj-gal-${i}" style="height:100px; font-family:monospace; font-size:0.85rem;" placeholder="https://...\nhttps://...">${p.gallery ? p.gallery.join('\n') : ''}</textarea>
+                    </div>
+
                     <div style="background:#f1f5f9; padding:1.5rem; border-radius:8px; border:1px solid #e2e8f0; margin-top:1rem;">
                         <label style="color:var(--primary); margin-bottom:1rem; border-bottom:1px solid #e2e8f0; padding-bottom:0.5rem;">--- Modal Details ---</label>
                         <div class="form-group"><label>The Challenge</label><textarea id="proj-chal-${i}">${p.challenge}</textarea></div>
@@ -704,6 +709,10 @@
                     appData.projects[i].challenge = document.getElementById(`proj-chal-${i}`).value;
                     appData.projects[i].solution = document.getElementById(`proj-sol-${i}`).value;
                     appData.projects[i].result = document.getElementById(`proj-res-${i}`).value;
+                    
+                    // SYNC GALLERY
+                    const galText = document.getElementById(`proj-gal-${i}`).value;
+                    appData.projects[i].gallery = galText.split('\n').filter(url => url.trim() !== '');
                 }
             });
 
@@ -726,7 +735,18 @@
 
         function addItem(type) {
             syncData();
-            if(type === 'projects') appData.projects.push({id: Date.now(), title:'New Project', subtitle:'Category', img:'', tech:'Python, SQL', desc:'Short desc...', challenge:'Challenge...', solution:'Solution...', result:'Result...'});
+            if(type === 'projects') appData.projects.push({
+                id: Date.now(), 
+                title:'New Project', 
+                subtitle:'Category', 
+                img:'', 
+                tech:'Python, SQL', 
+                desc:'Short desc...', 
+                challenge:'Challenge...', 
+                solution:'Solution...', 
+                result:'Result...',
+                gallery: [] // Added empty gallery
+            });
             if(type === 'dashboard') { if(!appData.dashboard) appData.dashboard = []; appData.dashboard.push({url:'', caption:'New Activity'}); }
             if(type === 'tools') { if(!appData.tools) appData.tools = []; appData.tools.push({name:'New Tool', icon:'box'}); }
             if(type === 'certificates') { if(!appData.certificates) appData.certificates = []; appData.certificates.push({title:'Certificate', issuer:'Issuer', img:''}); }

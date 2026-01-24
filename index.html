@@ -633,6 +633,31 @@
             border-radius: 0 8px 8px 0;
         }
 
+        /* PROJECT GALLERY GRID (NEW) */
+        .project-gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border);
+        }
+
+        .project-gallery-grid img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: transform 0.2s;
+            border: 1px solid var(--border);
+        }
+
+        .project-gallery-grid img:hover {
+            transform: scale(1.05);
+            box-shadow: var(--shadow-hover);
+        }
+
         /* --- TOOLS SECTION (SOLID BLUE ACCENT) --- */
         .tools-grid {
             display: flex;
@@ -750,52 +775,51 @@
             flex-direction: column;
             cursor: pointer;
             opacity: 0.6;
-            
-            /* Prepare for Tilt (Tilt logic is separate from slider logic) */
+            pointer-events: auto; /* Fix for clickability */
             transform-style: preserve-3d;
         }
 
         .cf-card.active {
             transform: translateX(0) scale(1.1) translateZ(50px);
-            z-index: 10;
+            z-index: 100 !important; /* Force top z-index */
             opacity: 1;
             border-color: var(--primary);
             box-shadow: 0 35px 60px -15px rgba(8, 145, 178, 0.3);
         }
 
         .cf-card.active:hover {
-            /* Note: Tilt JS handles transform, so we keep simple shadows here */
             box-shadow: 0 0 0 4px var(--primary-light), 0 35px 60px -15px rgba(8, 145, 178, 0.3);
+            transform: translateX(0) scale(1.12) translateZ(50px); /* Slight scale up on hover via CSS instead of JS */
         }
 
-        .cf-card.active::after {
-            content: 'Click for Details';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%) translateZ(20px);
-            background: rgba(0,0,0,0.7);
+        /* NEW BUTTON FOR BETTER AFFORDANCE */
+        .cf-view-btn {
+            margin-top: auto;
+            background: var(--primary);
             color: white;
-            padding: 10px 20px;
-            border-radius: 50px;
+            border: none;
+            padding: 10px;
+            border-radius: 8px;
             font-weight: 600;
+            cursor: pointer;
+            text-align: center;
             opacity: 0;
             transition: opacity 0.3s;
-            pointer-events: none;
+            margin: 1rem;
         }
-
-        .cf-card.active:hover::after {
+        
+        .cf-card.active .cf-view-btn {
             opacity: 1;
         }
 
         .cf-card.prev {
             transform: translateX(-380px) scale(0.85) rotateY(20deg);
-            z-index: 5;
+            z-index: 50;
         }
 
         .cf-card.next {
             transform: translateX(380px) scale(0.85) rotateY(-20deg);
-            z-index: 5;
+            z-index: 50;
         }
 
         .cf-card.hidden-left {
@@ -999,6 +1023,45 @@
             height: auto;
             display: inline-block;
         }
+        
+        /* --- LIGHTBOX (IMAGE ZOOM) STYLES --- */
+        .lightbox-modal {
+            display: none;
+            position: fixed;
+            z-index: 3000; /* Highest z-index */
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.95);
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .lightbox-modal.show { display: flex; opacity: 1; }
+        
+        .lightbox-content {
+            max-width: 90%;
+            max-height: 90vh;
+            border-radius: 4px;
+            box-shadow: 0 0 50px rgba(0,0,0,0.5);
+            object-fit: contain;
+            animation: zoomIn 0.3s ease forwards;
+        }
+        
+        .lightbox-close {
+            position: absolute;
+            top: 20px; right: 20px;
+            color: white; font-size: 2rem; cursor: pointer;
+            background: rgba(255,255,255,0.1);
+            width: 40px; height: 40px; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            transition: 0.2s;
+        }
+        
+        .lightbox-close:hover { background: rgba(255,255,255,0.3); }
 
         /* --- FOOTER --- */
         footer {
@@ -1135,7 +1198,7 @@
     <section id="featured" class="section-padding container">
         <div class="text-center" style="margin-bottom: 3rem;">
             <h2>Featured Case Studies</h2>
-            <p style="color: var(--text-muted);">Swipe to explore. Click on the center card for details.</p>
+            <p style="color: var(--text-muted);">Swipe to explore. Click on ANY card to view details.</p>
         </div>
 
         <div class="coverflow-wrapper">
@@ -1232,12 +1295,15 @@
 
                     <span class="section-title">Result</span>
                     <p id="modal-result" class="detail-text">Result...</p>
+                    
+                    <!-- NEW GALLERY GRID -->
+                    <div id="modal-gallery-grid" class="project-gallery-grid"></div>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- MODAL 3: HIRE ME POPUP (NEW) -->
+    <!-- MODAL 3: HIRE ME POPUP -->
     <div id="hireModal" class="modal">
         <div class="modal-content hire-modal-content">
             <button class="close-modal" onclick="closeHireModal()"><i data-lucide="x"></i></button>
@@ -1284,6 +1350,14 @@
                 <img id="cert-modal-img" src="" alt="Certificate View">
             </div>
         </div>
+    </div>
+    
+    <!-- MODAL 5: LIGHTBOX (NEW FOR IMAGES) -->
+    <div id="lightboxModal" class="lightbox-modal">
+        <div class="lightbox-close" onclick="closeLightbox()">
+            <i data-lucide="x"></i>
+        </div>
+        <img id="lightbox-img" class="lightbox-content" src="" alt="Full View">
     </div>
 
     <!-- HIDDEN INPUT FOR COPYING -->
@@ -1333,8 +1407,6 @@
             
             tilts.forEach(card => {
                 const rect = card.getBoundingClientRect();
-                const x = e.clientX - rect.left;
-                const y = e.clientY - rect.top;
                 
                 // Cek apakah mouse ada di dalam area kartu
                 if (
@@ -1343,15 +1415,21 @@
                     e.clientY >= rect.top && 
                     e.clientY <= rect.bottom
                 ) {
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+                    
                     // Hitung rotasi berdasarkan posisi mouse
                     const xCenter = rect.width / 2;
                     const yCenter = rect.height / 2;
                     const rotateX = ((y - yCenter) / yCenter) * -10; // Max 10 deg tilt
                     const rotateY = ((x - xCenter) / xCenter) * 10;
 
+                    // FIX: Ensure we don't conflict with CSS transitions if possible, 
+                    // but mainly used for Dashboard Envelope now.
                     card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.02)`;
                 } else {
                     // Reset posisi jika mouse keluar
+                    // FIX: Check if it's the envelope or generic
                     card.style.transform = `perspective(1000px) rotateX(0) rotateY(0) scale(1)`;
                 }
             });
@@ -1460,7 +1538,7 @@
         // 8. Dashboard Gallery
         const dashImages = portfolioData.dashboard || [];
         document.getElementById('gallery-render').innerHTML = dashImages.map(d => `
-        <div class="gallery-item">
+        <div class="gallery-item" onclick="openLightbox('${d.url}')">
         <img src="${d.url}" alt="${d.caption}">
         <div class="gallery-overlay">${d.caption}</div>
         </div>
@@ -1498,6 +1576,7 @@
             document.getElementById('modal-solution').textContent = p.solution;
             document.getElementById('modal-result').textContent = p.result;
 
+            // RENDER TAGS
             let tagsHtml = '';
             if (Array.isArray(p.tech)) {
             tagsHtml = p.tech.map(t => `<span class="meta-tag">${t}</span>`).join('');
@@ -1506,8 +1585,45 @@
             }
             document.getElementById('modal-tags').innerHTML = tagsHtml;
 
+            // NEW: RENDER GALLERY WITH LIGHTBOX (FIXED: NO NEW TAB)
+            const galGrid = document.getElementById('modal-gallery-grid');
+            galGrid.innerHTML = ''; // Clear previous
+            if (p.gallery && p.gallery.length > 0) {
+                p.gallery.forEach(url => {
+                    if(url.trim() !== '') {
+                        const img = document.createElement('img');
+                        img.src = url;
+                        // NEW LOGIC: Open Lightbox instead of Window Open
+                        img.onclick = function() { openLightbox(url); };
+                        img.title = "Click to zoom";
+                        galGrid.appendChild(img);
+                    }
+                });
+                galGrid.style.display = 'grid';
+            } else {
+                galGrid.style.display = 'none';
+            }
+
             projectModal.classList.add('show');
         }
+        
+        // --- LIGHTBOX LOGIC ---
+        const lightboxModal = document.getElementById('lightboxModal');
+        const lightboxImg = document.getElementById('lightbox-img');
+        
+        function openLightbox(url) {
+            lightboxImg.src = url;
+            lightboxModal.classList.add('show');
+        }
+        
+        function closeLightbox() {
+            lightboxModal.classList.remove('show');
+            setTimeout(() => { lightboxImg.src = ''; }, 300);
+        }
+        
+        lightboxModal.addEventListener('click', (e) => {
+            if (e.target === lightboxModal) closeLightbox();
+        });
 
         // --- MODAL LOGIC (CERTIFICATES - MACBOOK STYLE) ---
         const certModal = document.getElementById('certModal');
@@ -1544,8 +1660,11 @@
         function renderCoverflow() {
         track.innerHTML = portfolioData.projects.map((p, i) => {
         let className = 'cf-card';
+        // Logic for classes
         if (i === currentIndex) {
-            className += ' active tilt-3d'; // Add tilt effect to active card
+            // FIX: Removed 'tilt-3d' class to prevent JS conflict with CSS transition
+            // This fixes the "hard to click" issue on the center card
+            className += ' active'; 
         }
         else if (i === currentIndex - 1) className += ' prev';
         else if (i === currentIndex + 1) className += ' next';
@@ -1554,13 +1673,17 @@
         else if (i < currentIndex) className += ' hidden-left';
         else className += ' hidden-right';
 
+        // NOTE: I added a dedicated button inside the card for better click affordance
         return `
         <div class="${className}" onclick="handleCardClick(${i})">
         <img src="${p.img}" class="cf-image" alt="${p.title}">
         <div class="cf-content">
         <span style="color:var(--primary); font-size:0.8rem; font-weight:700; text-transform:uppercase;">${p.subtitle.split('•')[0]}</span>
         <h3 style="margin: 0.5rem 0; font-size:1.2rem;">${p.title}</h3>
-        <p style="font-size:0.9rem; color:var(--text-muted); display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;">${p.desc}</p>
+        <p style="font-size:0.9rem; color:var(--text-muted); display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; margin-bottom:auto;">${p.desc}</p>
+        
+        <!-- BUTTON ONLY SHOWS WHEN ACTIVE VIA CSS -->
+        <button class="cf-view-btn">View Case Study</button>
         </div>
         </div>`;
         }).join('');
@@ -1568,11 +1691,13 @@
         }
 
         function handleCardClick(index) {
-        if (index === currentIndex) {
-        openProjectDetails(index);
-        } else {
+        // PERUBAHAN UTAMA:
+        // Selalu setIndex (agar visual coverflow bergeser ke kartu yang diklik)
         setIndex(index);
-        }
+        
+        // DAN langsung buka detail (tanpa menunggu klik kedua)
+        // Ini menjawab "gaperlu nunggu posisi card di tengah aja"
+        openProjectDetails(index);
         }
 
         function moveCoverflow(dir) {
