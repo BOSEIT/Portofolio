@@ -236,25 +236,40 @@ const portfolioData = {
     ],
     "certificates": [
         {
-            "title": "SQL Query Optimization",
-            "issuer": "Online Cert",
-            "img": "https://images.unsplash.com/photo-1543286386-2e659306cd6c?q=80&w=1000&auto=format&fit=crop"
+            "title": "AI Foundation Certification",
+            "issuer": "Oracle",
+            "img": "https://github.com/BOSEIT/Portofolio/blob/main/assets/Certificate%20Data%20Analyst/AI%20Foundation%20Certification%20Luqfi%20Anita_page-0001.jpg?raw=true"
         },
         {
-            "title": "Python Bootcamp",
+            "title": "Data Science",
+            "issuer": "BNSP",
+            "img": "https://github.com/BOSEIT/Portofolio/blob/main/assets/Certificate%20Data%20Analyst/Luqfi%20Anita%20Rahman_BNSP%20Certified-images-0.jpg?raw=true"
+        },
+        {
+            "title": "Data Analyst",
             "issuer": "PPKD JakSel",
-            "img": "https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?q=80&w=1000&auto=format&fit=crop"
+            "img": "https://github.com/BOSEIT/Portofolio/blob/main/assets/Certificate%20Data%20Analyst/PPKD%20Data%20Analyst2.jpg?raw=true"
         },
         {
-            "title": "Data Visualization",
-            "issuer": "Workshop",
-            "img": "https://images.unsplash.com/photo-1554224155-6726b3ff858f?q=80&w=1000&auto=format&fit=crop"
+            "title": "Data Catalyst : Data Analyst",
+            "issuer": "Tutormy",
+            "img": "https://github.com/BOSEIT/Portofolio/blob/main/assets/Certificate%20Data%20Analyst/Participation%20-%20Data%20Catalyst%20Bootcamp%20Bootcamp%20(80).png?raw=true"
+        },
+        {
+            "title": "Award Certificate The Transformers",
+            "issuer": "Issuer",
+            "img": "https://github.com/BOSEIT/Portofolio/blob/main/assets/Certificate%20Data%20Analyst/Sertifikat%20Penghargaan%20PPKD.png?raw=true"
+        },
+        {
+            "title": "Certificate of Recognition",
+            "issuer": "Oracle",
+            "img": "https://github.com/BOSEIT/Portofolio/blob/main/assets/Certificate%20Data%20Analyst/eCertificate%20Data%20Science%20Luqfi%20Anita-1.png?raw=true"
         }
     ],
     "footer": {
         "copyright": "© 2026 Luqfi Anita Rahman. All rights reserved.",
-        "linkedin": "#",
+        "linkedin": "https://www.linkedin.com/in/luqfi-anita-rahman-09b9b9206 ",
         "github": "https://github.com/luqfianita8317?tab=repositories",
-        "instagram": "#"
+        "instagram": "https://www.instagram.com/fii_anita?igsh=aDF1d3VkaXJiNXM3"
     }
 };
