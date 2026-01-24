@@ -865,11 +865,13 @@
             overflow: hidden;
             border: 1px solid var(--border);
             transition: 0.3s;
+            cursor: pointer; /* Menunjukkan bisa diklik */
         }
 
         .cert-card:hover {
             transform: translateY(-5px);
-            box-shadow: var(--shadow-soft);
+            box-shadow: var(--shadow-hover);
+            border-color: var(--primary-soft);
         }
 
         .cert-img {
@@ -886,6 +888,116 @@
 
         .cert-body {
             padding: 1.5rem;
+        }
+        
+        /* --- CERTIFICATE MODAL (MACBOOK STYLE) --- */
+        .cert-modal {
+            display: none;
+            position: fixed;
+            z-index: 2500; /* Higher than other modals */
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.6);
+            backdrop-filter: blur(8px);
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .cert-modal.show {
+            display: flex;
+            opacity: 1;
+        }
+
+        .mac-window {
+            background: white;
+            width: 100%;
+            max-width: 900px;
+            border-radius: 12px;
+            box-shadow: 0 50px 100px -20px rgba(0,0,0,0.5);
+            overflow: hidden;
+            transform: scale(0.9);
+            transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            animation: zoomIn 0.4s ease forwards;
+        }
+
+        @keyframes zoomIn {
+            from { transform: scale(0.9); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
+        .mac-header {
+            background: #e2e8f0; /* darker gray for header */
+            padding: 12px 16px;
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid #cbd5e1;
+        }
+
+        .mac-buttons {
+            display: flex;
+            gap: 8px;
+        }
+
+        .mac-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            /* FLEX CENTER UNTUK ICON */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            /* HIDDEN BY DEFAULT (MACOS STYLE) */
+            opacity: 1; 
+        }
+
+        /* Ikon di dalam dot */
+        .mac-dot svg {
+            opacity: 0; /* Sembunyikan ikon awalnya */
+            transition: opacity 0.2s;
+            stroke-width: 3px;
+        }
+
+        /* Tampilkan ikon saat hover di container tombol */
+        .mac-buttons:hover .mac-dot svg {
+            opacity: 0.6; /* Semi transparan seperti mac asli */
+        }
+        
+        .mac-buttons:hover .mac-dot:hover svg {
+            opacity: 1; /* Full solid saat di hover langsung */
+        }
+
+        .mac-dot.red { background: #ff5f56; cursor: pointer; }
+        .mac-dot.yellow { background: #ffbd2e; }
+        .mac-dot.green { background: #27c93f; }
+
+        .mac-title {
+            flex-grow: 1;
+            text-align: center;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #475569;
+            margin-right: 52px; /* balance the dots width */
+        }
+
+        .mac-body {
+            background: #0f172a; /* Dark background for image contrast */
+            padding: 0;
+            line-height: 0;
+            max-height: 80vh;
+            overflow-y: auto;
+            text-align: center;
+        }
+
+        .mac-body img {
+            width: auto;
+            max-width: 100%;
+            height: auto;
+            display: inline-block;
         }
 
         /* --- FOOTER --- */
@@ -1042,6 +1154,7 @@
     <section class="section-padding container">
         <div class="text-center" style="margin-bottom: 3rem;">
             <h2>Certifications</h2>
+            <p style="color: var(--text-muted);">Click on any certificate to view details.</p>
         </div>
         <div class="cert-grid" id="cert-render"></div>
         <div class="text-center">
@@ -1146,6 +1259,29 @@
                         <i data-lucide="copy" width="20"></i> <span id="btn-copy-text">Copy Email Address</span>
                     </button>
                 </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- MODAL 4: CERTIFICATE MODAL (MACBOOK STYLE) -->
+    <div id="certModal" class="cert-modal">
+        <div class="mac-window">
+            <div class="mac-header">
+                <div class="mac-buttons">
+                    <div class="mac-dot red" onclick="closeCertModal()">
+                        <i data-lucide="x" width="8" height="8" style="color:#5c0002;"></i>
+                    </div>
+                    <div class="mac-dot yellow">
+                        <i data-lucide="minus" width="8" height="8" style="color:#664d03;"></i>
+                    </div>
+                    <div class="mac-dot green">
+                        <i data-lucide="chevrons-up-down" width="8" height="8" style="color:#0a360a;"></i>
+                    </div>
+                </div>
+                <span class="mac-title" id="cert-window-title">Certificate Preview</span>
+            </div>
+            <div class="mac-body">
+                <img id="cert-modal-img" src="" alt="Certificate View">
             </div>
         </div>
     </div>
@@ -1309,15 +1445,15 @@
         </div>
         `).join('');
 
-        // 7. Certificates
+        // 7. Certificates (UPDATED WITH ONCLICK MODAL)
         const certs = portfolioData.certificates || [];
         document.getElementById('cert-render').innerHTML = certs.map(c => `
-        <div class="cert-card">
-        <div class="cert-img"><img src="${c.img}" alt="${c.title}"></div>
-        <div class="cert-body">
-        <span style="display:block; font-weight:700;">${c.title}</span>
-        <span style="font-size:0.85rem; color:var(--text-muted);">${c.issuer}</span>
-        </div>
+        <div class="cert-card" onclick="openCertModal('${c.img}', '${c.title}')">
+            <div class="cert-img"><img src="${c.img}" alt="${c.title}"></div>
+            <div class="cert-body">
+                <span style="display:block; font-weight:700;">${c.title}</span>
+                <span style="font-size:0.85rem; color:var(--text-muted);">${c.issuer}</span>
+            </div>
         </div>
         `).join('');
 
@@ -1354,24 +1490,52 @@
         projectModal.addEventListener('click', (e) => { if(e.target === projectModal) closeProjectModal(); });
 
         function openProjectDetails(index) {
-        const p = portfolioData.projects[index];
-        document.getElementById('modal-img').src = p.img;
-        document.getElementById('modal-subtitle').textContent = p.subtitle;
-        document.getElementById('modal-title').textContent = p.title;
-        document.getElementById('modal-challenge').textContent = p.challenge;
-        document.getElementById('modal-solution').textContent = p.solution;
-        document.getElementById('modal-result').textContent = p.result;
+            const p = portfolioData.projects[index];
+            document.getElementById('modal-img').src = p.img;
+            document.getElementById('modal-subtitle').textContent = p.subtitle;
+            document.getElementById('modal-title').textContent = p.title;
+            document.getElementById('modal-challenge').textContent = p.challenge;
+            document.getElementById('modal-solution').textContent = p.solution;
+            document.getElementById('modal-result').textContent = p.result;
 
-        let tagsHtml = '';
-        if (Array.isArray(p.tech)) {
-        tagsHtml = p.tech.map(t => `<span class="meta-tag">${t}</span>`).join('');
-        } else {
-        tagsHtml = p.tech.split(',').map(t => `<span class="meta-tag">${t.trim()}</span>`).join('');
-        }
-        document.getElementById('modal-tags').innerHTML = tagsHtml;
+            let tagsHtml = '';
+            if (Array.isArray(p.tech)) {
+            tagsHtml = p.tech.map(t => `<span class="meta-tag">${t}</span>`).join('');
+            } else {
+            tagsHtml = p.tech.split(',').map(t => `<span class="meta-tag">${t.trim()}</span>`).join('');
+            }
+            document.getElementById('modal-tags').innerHTML = tagsHtml;
 
-        projectModal.classList.add('show');
+            projectModal.classList.add('show');
         }
+
+        // --- MODAL LOGIC (CERTIFICATES - MACBOOK STYLE) ---
+        const certModal = document.getElementById('certModal');
+        const certImg = document.getElementById('cert-modal-img');
+        const certTitle = document.getElementById('cert-window-title');
+
+        function openCertModal(imgUrl, title) {
+            certImg.src = imgUrl;
+            certTitle.textContent = title || 'Certificate Preview';
+            certModal.classList.add('show');
+            // Refresh icons inside modal since they were hidden
+            setTimeout(() => {
+                lucide.createIcons();
+            }, 50);
+        }
+
+        function closeCertModal() {
+            certModal.classList.remove('show');
+            setTimeout(() => {
+                certImg.src = ''; // Clear source to prevent ghosting
+            }, 300);
+        }
+
+        // Close on click outside or red button
+        certModal.addEventListener('click', (e) => {
+            if(e.target === certModal) closeCertModal();
+        });
+
 
         // --- 3D COVERFLOW LOGIC ---
         const track = document.getElementById('coverflow-track');
